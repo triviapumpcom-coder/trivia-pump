@@ -195,6 +195,15 @@ io.on('connection', (socket) => {
   });
 });
 
+// Force HTTPS in production (Heroku)
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'production' && req.header('x-forwarded-proto') !== 'https') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+  } else {
+    next();
+  }
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
