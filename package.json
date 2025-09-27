@@ -10,7 +10,7 @@
     "typecheck": "tsc -b",
     "build": "echo 'Building frontend...' && cd apps/web && npm install && npm run build && echo 'Frontend build complete!'",
     "start": "node server.js",
-    "heroku-postbuild": "cd apps/api && npm install && npm run build && cd ../web && npm install && npm run build",
+    "heroku-postbuild": "cd apps/web && npm install && npm run build",
     "build:web": "cd apps/web && npm run build",
     "build:api": "cd apps/api && npm run build",
     "start:api": "cd apps/api && npm start",
@@ -23,7 +23,9 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "@solana/web3.js": "^1.95.3",
+    "@solana/spl-token": "^0.4.8"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
