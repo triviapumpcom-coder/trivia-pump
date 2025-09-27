@@ -306,6 +306,9 @@ try {
   if (contractAddress && startPumpChatIntegration) {
     console.log(`🚀 Starting pump.fun integration for: ${contractAddress}`);
     startPumpChatIntegration(contractAddress, async (msg) => {
+      // DEBUG: Log full message object
+      console.log(`💬 Raw message object:`, JSON.stringify(msg, null, 2));
+      
       // normalize message -> detect choice
       const raw = (msg.message || "");
       const text = raw.trim();
