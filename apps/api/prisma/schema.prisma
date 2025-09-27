@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id // wallet address or hashed chat id
+  displayName  String?  @map("display_name")
+  createdAt    DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  scores       ScoreWeekly[]
+  payouts      Payout[]
+  
+  @@map("users")
+}
+
+model ScoreWeekly {
+  id        String   @id // `${week}_${userId}`
+  week      Int
+  userId    String   @map("user_id")
+  score     Int      @default(0)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([week, userId])
+  @@index([week])
+  @@index([score])
+  @@map("scores_weekly")
+}
+
+model Payout {
+  id        String   @id @default(cuid())
+  week      Int
+  userId    String   @map("user_id")
+  rank      Int
+  amount    Decimal  @db.Decimal(20, 8)
+  tx        String?  // transaction signature
+  status    PayoutStatus @default(PENDING)
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([week])
+  @@index([status])
+  @@map("payouts")
+}
+
+model RoundLog {
+  id        String   @id @default(cuid())
+  roundId   String   @map("round_id")
+  userId    String   @map("user_id")
+  choice    String   // A, B, C, D
+  correct   Boolean
+  latencyMs Int?     @map("latency_ms")
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  @@index([roundId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("round_logs")
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}

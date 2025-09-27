@@ -1,0 +1,48 @@
+{
+  "name": "quizbot-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "pnpm -C apps/web dev",
+    "dev:api": "pnpm -C apps/api dev",
+    "dev": "concurrently \"pnpm -C apps/web dev\" \"pnpm -C apps/api dev\"",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc -b",
+    "build": "echo 'Building frontend...' && cd apps/web && npm install && npm run build && echo 'Frontend build complete!'",
+    "start": "node server.js",
+    "heroku-postbuild": "echo 'Skipping frontend build - using static files'",
+    "build:web": "pnpm -C apps/web build",
+    "build:api": "pnpm -C apps/api build",
+    "build:npm": "npm install && npm run build:web:npm && npm run build:api:npm",
+    "build:web:npm": "cd apps/web && npm install && npm run build",
+    "build:api:npm": "cd apps/api && npm install && npm run build",
+    "start:api": "pnpm -C apps/api start",
+    "db:generate": "pnpm -C apps/api db:generate",
+    "db:push": "pnpm -C apps/api db:push",
+    "db:migrate": "pnpm -C apps/api db:migrate"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "@vitejs/plugin-react": "^4.3.2"
+  }
+}
+
+

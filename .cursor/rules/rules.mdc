@@ -1,0 +1,361 @@
+rules.mdc — Interactive Multiplayer Quiz x Pump.fun (React + Node.js)
+
+Goal: Build a fast, legible, production-ready web quiz system that ingests answers via Pump.fun live chat and broadcasts 30s rounds in real time. Clean UX, robust Node backend, Solana token stats, weekly leaderboard + token tips for Top 3.
+
+⸻
+
+0) Tech Decisions (must)
+	•	Frontend: React + Vite, TypeScript, TailwindCSS.
+	•	State mgmt: Zustand (lightweight), React Query for data fetching.
+	•	Realtime: socket.io-client (UI updates). Answers come from Pump.fun chat via server.
+	•	Backend: Node.js + TypeScript, Express (REST) + socket.io (WS).
+	•	Storage: Redis (round state, rate limits), PostgreSQL or MongoDB (users, weekly scores, logs).
+	•	Solana: @solana/web3.js (+ @solana/spl-token later for prize payouts).
+	•	Jobs: node-cron or BullMQ for weekly reset & prize distribution.
+	•	Lint/Format: ESLint + Prettier + Husky (pre-commit).
+	•	Env: .env + Zod schema to validate required vars at boot.
+
+⸻
+
+1) User Stories (acceptance criteria)
+	1.	As a visitor, I can see the current question, a 30s countdown, and choices A–D.
+	2.	I’m told to answer in live chat (“Type /a, /b, /c, /d in Pump.fun chat”).
+	3.	When the round ends, I see the correct answer, winners, and my weekly score.
+	4.	I can open Leaderboard to view Top 50 weekly players and search my wallet/name.
+	5.	I can open Token page to see Top 10 holders and basic token meta.
+	6.	Every week, the leaderboard resets and the Top 3 get token tips (recorded on-chain and visible with tx links).
+	7.	The UI is mobile-first, readable, with clear contrasts and no jank < 100ms frame stutters.
+
+⸻
+
+2) Pages & Routes (frontend)
+	•	/ → Landing: short how-it-works, Join Game CTA, live token stats tickers (optional).
+	•	/game → Live Game: question, 30s timer, choice cards (read-only), status feed.
+	•	/leaderboard → Weekly leaderboard + search.
+	•	/token/:mint → Token details (Top 10 holders, mint, supply, updates).
+	•	/legal → Terms/Privacy.
+
+⸻
+
+3) UI/UX Guidelines
+	•	Design tokens (Tailwind):
+	•	Primary: #0A2E52 (ink), Accent: #2DB4FF, Surface: #0E1B1F, Muted: #C7D2FE, Success: #22C55E, Danger: #EF4444.
+	•	Font: Inter, system fallback.
+	•	Layout: max-w 900px centered, generous spacing (8/12/16). Cards with subtle shadow and rounded-2xl.
+	•	Countdown: circular progress + numeric seconds. Color shifts 10s → Accent to Danger.
+	•	Question: Large, high-contrast. Choices A–D visible but disabled; subtitle text: “Answer in live chat: /a /b /c /d”.
+	•	Live feed: vertical list of last 10 events (”@alice answered A”, “Round ended: Correct B”).
+	•	Leader row: avatar (initials), name/wallet-short, score badge.
+	•	Empty/Loading states: skeletons, spinners, no layout shift.
+	•	Accessibility: semantic HTML, aria-live for announcements (round start/end), 44px touch targets.
+
+⸻
+
+4) Client State Model (Zustand)
+
+// ui/store/game.ts
+interface RoundState {
+  roundId: string | null;
+  question: string;
+  options: [string, string, string, string];
+  correct?: 'A'|'B'|'C'|'D'; // filled after end
+  endsAt: number; // ms epoch
+  status: 'idle'|'running'|'ended';
+  winners: Array<{ id: string; name: string }>; // after end
+}
+
+
+⸻
+
+5) WebSocket Events (contract)
+
+Server → Client
+	•	round:start → { id, question, options: [A,B,C,D], endsAt }
+	•	round:tick → { now } (optional if client computes)
+	•	round:end → { id, correct, winners: [{id,name}], total }
+	•	trade:update → { price, vol, tx, ts } (optional showcase)
+
+Client → Server
+	•	(none for answers; answers come from Pump.fun chat via server). Optional: client:hello to register UI session.
+
+⸻
+
+6) REST API (contract)
+	•	GET /api/leaderboard/weekly?limit=50&cursor= → { items:[{userId,name,score}], nextCursor }
+	•	GET /api/token/:mint/top-holders → { holders:[{owner, amount}] }
+	•	GET /api/me → returns inferred identity if available (from chat mapping) else null.
+	•	GET /api/health → { ok:true, version }
+
+⸻
+
+7) Backend Modules (Node)
+	•	src/index.ts → app bootstrap, env validation, HTTP + WS server.
+	•	src/ws/index.ts → socket.io setup, broadcast helpers.
+	•	src/game/engine.ts → round loop (30s), timers, state, emits.
+	•	src/game/answers.ts → Redis sets/hmaps; one-answer-per-round policy.
+	•	src/integrations/pumpChat.ts → Your ready WS client goes here. Normalize {roomMint, account, displayName, message} → call answers.ingest().
+	•	src/integrations/pumpPortal.ts → optional trade stream to UI.
+	•	src/integrations/solana.ts → getTopHolders(mint), rpc client.
+	•	src/db → Prisma (Postgres) or Mongoose (Mongo). Tables/collections: users, scoresWeekly, roundLogs, payouts.
+	•	src/jobs/weekly.ts → compute Top 3, trigger payouts, reset leaderboard.
+	•	src/http/routes.ts → Express routes from API contract.
+	•	src/security/rateLimit.ts → IP/wallet flood control.
+
+⸻
+
+8) Data & DB Schema (suggested)
+
+-- Postgres
+CREATE TABLE users (
+  id TEXT PRIMARY KEY,          -- wallet or hashed chat id
+  display_name TEXT,
+  created_at TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE scores_weekly (
+  id TEXT PRIMARY KEY,          -- `${week}_${userId}`
+  week INT NOT NULL,            -- ISO week number
+  user_id TEXT REFERENCES users(id),
+  score INT DEFAULT 0,
+  updated_at TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE payouts (
+  id TEXT PRIMARY KEY,
+  week INT,
+  user_id TEXT,
+  rank INT,
+  amount NUMERIC,
+  tx TEXT,                      -- signature
+  created_at TIMESTAMP DEFAULT now()
+);
+
+Redis keys
+	•	answers:{roundId} → HMAP { userId: 'A'|'B'|'C'|'D' }
+	•	answered:{roundId} → SET of userIds (first valid wins)
+	•	scores:weekly → HMAP { userId: score } (mirror for speed, then persist to DB)
+
+⸻
+
+9) Round Engine (business rules)
+	•	Round length: 30s hard cap.
+	•	Cooldown: 5s between rounds.
+	•	One valid answer per userId per round.
+	•	Scoring: +1 per correct. (allow future weights)
+	•	Broadcast schedule: round:start immediately, round:end at T=30s.
+	•	Edge cases: if no answers → still round:end with total=0.
+
+⸻
+
+10) Identity & Anti-cheat
+	•	Primary identity: wallet public key from chat payload if provided; else stable account id.
+	•	Display name: best-effort from chat; sanitize (strip emojis/zero-width, length <= 24).
+	•	Rate limits: Max 1 answer per 2s per user; global 30 req/min per IP.
+	•	Moderation: strip URLs, ignore messages > 50 chars; accept only a|b|c|d|/a|/b|/c|/d (case-insensitive) as answers.
+	•	Logging: persist suspicious activity for audit.
+
+⸻
+
+11) Solana & Payouts (phase 2)
+	•	Treasury wallet in .env. Use @solana/spl-token to ensure ATA, then transfer token to winners.
+	•	Weekly cron: compute Top 3 from DB; enqueue transfers; record tx signature.
+	•	UI displays last week winners with on-chain links.
+
+⸻
+
+12) Question Source & AI
+	•	V1: curated JSON bank (medium difficulty, general knowledge/history). Keep source field for transparency.
+	•	V2: AI generator service creates distractors; human-in-the-loop approval; cache into questions_approved.
+	•	Validation: no ambiguous/dated questions; include updatedAt and region if relevant.
+
+⸻
+
+13) File Tree (expected)
+
+apps/
+  web/ (React + Vite)
+    src/
+      pages/ (routing)
+      components/
+        Countdown.tsx
+        QuestionCard.tsx
+        LiveFeed.tsx
+        LeaderRow.tsx
+      hooks/
+      store/
+      lib/socket.ts
+  api/ (Node + Express)
+    src/
+      index.ts
+      http/
+        routes.ts
+      ws/
+        index.ts
+      game/
+        engine.ts
+        answers.ts
+      integrations/
+        pumpChat.ts  // <— plug your live socket here
+        pumpPortal.ts
+        solana.ts
+      jobs/
+        weekly.ts
+      security/
+        rateLimit.ts
+      db/
+        prisma.ts (or mongoose.ts)
+        models.ts
+packages/
+  config/, eslint-config/, tsconfig/
+
+
+⸻
+
+14) Environment (.env example)
+
+NODE_ENV=development
+PORT=5173
+API_PORT=5000
+REDIS_URL=redis://localhost:6379
+DATABASE_URL=postgres://user:pass@localhost:5432/quiz
+SOLANA_RPC=https://api.mainnet-beta.solana.com
+TREASURY_PRIVATE_KEY=...  # keep safe, use KMS in prod
+MINT=... # target token mint
+PUMP_CHAT_WSS=wss://...   # your working Pump.fun chat socket
+
+At startup, validate env using Zod; crash fast if missing.
+
+⸻
+
+15) NPM Scripts (monorepo sample)
+
+{
+  "scripts": {
+    "dev:web": "vite",
+    "dev:api": "ts-node-dev --respawn src/index.ts",
+    "dev": "concurrently \"pnpm dev:web\" \"pnpm dev:api\"",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc -b",
+    "build:web": "vite build",
+    "build:api": "tsc -p apps/api",
+    "start:api": "node dist/index.js"
+  }
+}
+
+
+⸻
+
+16) HTTP/WS Skeletons (snippets)
+
+Express routes
+
+router.get('/leaderboard/weekly', ctrl.leaderboard.getWeekly);
+router.get('/token/:mint/top-holders', ctrl.token.getTopHolders);
+router.get('/health', (_req,res) => res.json({ ok:true, version: process.env.npm_package_version }));
+
+Socket wiring
+
+io.on('connection', (socket) => {
+  socket.emit('hello', { t: Date.now() });
+});
+
+function broadcastRoundStart(payload) {
+  io.emit('round:start', payload);
+}
+function broadcastRoundEnd(payload) {
+  io.emit('round:end', payload);
+}
+
+
+⸻
+
+17) Frontend Components (must-have)
+	•	Countdown.tsx: derived from endsAt; updates every 200ms; color thresholds (<=10s danger).
+	•	QuestionCard.tsx: question + 4 choices (disabled); helper text to chat answers.
+	•	LiveFeed.tsx: last N events; auto-scroll; aria-live="polite".
+	•	LeaderRow.tsx: compact row for leaderboard.
+	•	TokenHolders.tsx: table of top holders; short addresses; copy btn.
+
+⸻
+
+18) Performance Guidelines
+	•	Avoid re-render storms: memoize components, colocate state.
+	•	Socket events: debounce UI updates to 10–15 fps if needed.
+	•	Code-split routes; prefetch /game on landing CTA hover.
+	•	Images/icons: SVG inline, no heavy libs.
+
+⸻
+
+19) Security & Privacy
+	•	Never expose treasury keys to frontend. Server-only.
+	•	Sanitize all incoming chat display names and messages.
+	•	CORS: restrict origins in production.
+	•	Rate limit REST and WS connections; ban on abuse.
+	•	Telemetry: anonymized metrics only (no PII beyond wallet public key / hashed ids).
+
+⸻
+
+20) QA Checklist (blockers to ship)
+	•	Round loop runs stable for 1h (no drift; ends exactly at 30s).
+	•	One-answer-per-user enforced.
+	•	Leaderboard sorts correctly + pagination works.
+	•	Token Top 10 holders endpoint returns within < 1s cached.
+	•	Mobile (375px), Tablet (768px), Desktop (1440px) layouts verified.
+	•	Accessibility: keyboard focus, aria-live, contrast AA.
+	•	Env validation & 500 handler paths covered.
+
+⸻
+
+21) Cursor Tasks (copy-paste to Cursor)
+
+Task: Bootstrap Monorepo
+	•	Create apps/web (React + Vite + TS + Tailwind) and apps/api (Express + TS + socket.io).
+	•	Add ESLint/Prettier/Husky shared config in packages/.
+	•	Implement .env schema validation.
+
+Task: Realtime Game Engine
+	•	Implement engine.ts: 30s round tick, broadcast start/end, integrate Redis for answers.
+	•	Expose startRoundLoop() from server entry.
+
+Task: Pump.fun Chat Integration
+	•	Wire your ready socket client inside integrations/pumpChat.ts.
+	•	Normalize payload and call answers.ingest(roundId, userId, displayName, choice).
+
+Task: Token Holders Endpoint
+	•	Add GET /api/token/:mint/top-holders using Solana RPC; cache 30s in Redis.
+
+Task: UI
+	•	Build /game with Countdown, QuestionCard, LiveFeed and socket connection.
+	•	Build /leaderboard with server pagination.
+
+⸻
+
+22) Definition of Done (DoD)
+	•	Live demo where two browsers observe the same round; chat answers increment scores correctly; leaderboard updates on refresh.
+	•	Token page shows Top 10 holders for configured MINT.
+	•	Weekly reset cron can be dry-run and logs intended winners.
+	•	Lighthouse perf score ≥ 90 mobile.
+
+⸻
+
+23) Future Work
+	•	Prize payouts on-chain (SPL token transfers) with admin dashboard.
+	•	OBS overlay mode for streams.
+	•	Multi-room support (different mints/rooms).
+	•	AI narrated questions (TTS) with low-latency audio injection.
+
+⸻
+
+Notes
+	•	You already have the Pump.fun live socket listener. This rules file assumes you will plug it into integrations/pumpChat.ts and emit standardized events to the game engine.
+	•	Keep functions pure, isolate IO, and unit-test the engine (deterministic timers via fake clock where possible).
+
+⸻
+
+24) Decisions Addendum (2025-09-26)
+	•	Language: EN-only question bank.
+	•	Questions: support optional media[] (image) and optional durationSec (20–40). Default 30s.
+	•	WebSocket round:start payload includes media? and durationSec?.
+	•	Media hosting: Cloudflare R2 + Cloudflare Images/CDN (recommended).
+	•	Anti-Google: paraphrase, close distractors, shuffle options server-side.
