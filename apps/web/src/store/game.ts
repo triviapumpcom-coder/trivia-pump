@@ -248,9 +248,12 @@ export const useGameStore = create<GameStore>((set) => ({
       
       const optionStats = { ...s.optionStats, [choice]: (s.optionStats[choice] ?? 0) + 1 };
       const scores = { ...s.scores };
-      if (typeof total === "number" && !Number.isNaN(total)) {
-        scores[userId] = total;
+      
+      // Give points for accepted answers (will be updated when round ends with correct ranking)
+      if (status === "accepted") {
+        scores[userId] = (scores[userId] || 0) + 25; // Base points for correct answer
       }
+      
       const latencies = { ...s.latencies, [userId]: latencySec ?? s.latencies[userId] ?? null };
       
       return {

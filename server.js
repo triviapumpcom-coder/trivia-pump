@@ -646,12 +646,17 @@ try {
           };
           
           io.emit("feed:event", answerData);
+          // Calculate latency (time since round started)
+          const now = Date.now();
+          const latencySec = round.endsAt ? Math.max(0, (round.durationSec * 1000 - (round.endsAt - now)) / 1000) : null;
+          
           io.emit("answer:accepted", {
             roundId: round.id,
             userId: userId,
             choice: choice,
             status: "accepted",
-            userName: userName
+            userName: userName,
+            latencySec: latencySec
           });
           
           console.log(`📡 BROADCAST: ${choice} (both feed:event and answer:accepted)`);
