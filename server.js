@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const http = require('http');
+const { Server } = require('socket.io');
 
 // 🔥 CONTRACT ADDRESS FROM ENV (with fallback)
 const contractAddress = process.env.CONTRACT_ADDRESS || process.env.VITE_CONTRACT_ADDRESS || "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
@@ -169,6 +171,29 @@ try {
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Create HTTP server for Socket.IO
+const httpServer = http.createServer(app);
+
+// Socket.IO setup for WebSocket connections
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  },
+  transports: ["websocket", "polling"]
+});
+
+// WebSocket connection handling
+io.on('connection', (socket) => {
+  console.log(`🔗 WebSocket client connected: ${socket.id}`);
+  
+  socket.emit('hello', { message: 'Connected to Trivia Pump!', timestamp: Date.now() });
+  
+  socket.on('disconnect', () => {
+    console.log(`🔌 WebSocket client disconnected: ${socket.id}`);
+  });
+});
 
 // Middleware
 app.use(cors());
@@ -536,6 +561,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'apps/web/dist/index.html'));
 });
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🔗 WebSocket server ready for connections`);
 });
