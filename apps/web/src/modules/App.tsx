@@ -9,6 +9,7 @@ import { HeaderBar } from "../components/HeaderBar";
 import { RecentWinners } from "../components/RecentWinners";
 import { BackgroundQueue } from "../components/BackgroundQueue";
 import { RoundReveal } from "../components/RoundReveal";
+import { ErrorBoundary } from "../components/ErrorBoundary";
 import { useGameStore } from "../store/game";
 import { useBackgroundStore } from "../store/background";
 import { useFlashStore } from "../store/flash";
@@ -215,7 +216,9 @@ export function App(): JSX.Element {
         <HeaderBar />
       </div>
       <div className="flex-shrink-0 px-4 mb-0">
-        <WinnersTicker />
+            <ErrorBoundary>
+              <WinnersTicker />
+            </ErrorBoundary>
       </div>
       <div className="flex-1 px-4 pb-2 min-h-0">
         {/* Desktop Layout (1024px+) */}
@@ -247,7 +250,9 @@ export function App(): JSX.Element {
               </div>
             </div>
             <div className="min-h-0">
-              <LeaderboardPanel />
+              <ErrorBoundary>
+                <LeaderboardPanel />
+              </ErrorBoundary>
             </div>
           </div>
           
@@ -288,7 +293,9 @@ export function App(): JSX.Element {
           {/* Right Sidebar - Stats */}
           <div className="grid gap-2" style={{ gridTemplateRows: "1fr 1fr" }}>
             <div className="min-h-0">
-              <TokenHoldersPanel />
+              <ErrorBoundary>
+                <TokenHoldersPanel />
+              </ErrorBoundary>
             </div>
             <div className="min-h-0">
               <RecentWinners />
@@ -370,10 +377,14 @@ export function App(): JSX.Element {
           {/* Mobile Stats Grid */}
           <div className="flex-shrink-0 grid grid-cols-2 gap-2" style={{ height: "120px" }}>
             <div className="min-h-0">
-              <LeaderboardPanel />
+              <ErrorBoundary>
+                <LeaderboardPanel />
+              </ErrorBoundary>
             </div>
             <div className="min-h-0">
-              <TokenHoldersPanel />
+              <ErrorBoundary>
+                <TokenHoldersPanel />
+              </ErrorBoundary>
             </div>
           </div>
 
