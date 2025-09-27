@@ -1,7 +1,23 @@
 {
-  "buildCommand": "pwd && ls -la && ls -la apps/ && cd apps/web && pwd && npm install && npm run build",
-  "outputDirectory": "apps/web/dist",
-  "installCommand": "echo 'Skip root install'",
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/web/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
   "env": {
     "VITE_CONTRACT_ADDRESS": "5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump"
   }
