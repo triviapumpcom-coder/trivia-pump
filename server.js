@@ -627,11 +627,12 @@ try {
       const m = /^\/?\s*([a-d])\b/i.exec(text);
       const choice = m ? m[1].toUpperCase() : undefined;
       
-      if (choice) {
-        console.log(`🎯 ANSWER: ${userId} -> ${choice}`);
-        const round = getCurrentRound();
-        if (round && ingestAnswer) {
-          await ingestAnswer(round.id, userId, choice);
+          if (choice) {
+            console.log(`🎯 ANSWER: ${userId} -> ${choice}`);
+            console.log(`🔍 DEBUG: userId type: ${typeof userId}, length: ${userId?.length}, value: "${userId}"`);
+            const round = getCurrentRound();
+            if (round && ingestAnswer) {
+              await ingestAnswer(round.id, userId, choice);
           
           // Broadcast both feed:event and answer:accepted
           const answerData = {
