@@ -199,18 +199,43 @@ io.on('connection', (socket) => {
 app.use(cors());
 app.use(express.json());
 
-// 🎮 IMPORT TYPESCRIPT API ROUTES
-try {
-  const apiRoutes = require('./apps/api/dist/http/routes.js');
-  if (apiRoutes && apiRoutes.router) {
-    app.use('/api', apiRoutes.router);
-    console.log('✅ TypeScript API routes loaded');
+// 🎮 IMPORT TYPESCRIPT API ROUTES (ES Module compatible)
+(async () => {
+  try {
+    const apiRoutes = await import('./apps/api/dist/http/routes.js');
+    if (apiRoutes && apiRoutes.router) {
+      app.use('/api', apiRoutes.router);
+      console.log('✅ TypeScript API routes loaded - 250 questions system active');
+    }
+  } catch (err) {
+    console.log('⚠️ TypeScript API routes not available:', err.message);
   }
-} catch (err) {
-  console.log('⚠️ TypeScript API routes not available:', err.message);
-}
+})();
 
-// TypeScript API routes already imported above
+// 🎮 START QUIZ ENGINE WITH 250 QUESTIONS
+(async () => {
+  try {
+    const { startRoundLoop } = await import('./apps/api/dist/game/engine.js');
+    const { setupWS } = await import('./apps/api/dist/ws/index.js');
+    
+    if (startRoundLoop && setupWS) {
+      console.log('🎮 Starting quiz engine with 250 questions...');
+      
+      // Setup WebSocket broadcast
+      const ws = setupWS(io);
+      
+      // Start the round loop
+      startRoundLoop((event, payload) => {
+        console.log(`📡 Broadcasting: ${event}`);
+        ws.broadcast(event, payload);
+      });
+      
+      console.log('✅ Quiz engine started - real 250 questions system active!');
+    }
+  } catch (err) {
+    console.log('⚠️ Quiz engine not available:', err.message);
+  }
+})();
 
 // API Routes
 app.get('/api/test', (req, res) => {
