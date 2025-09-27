@@ -263,12 +263,22 @@ try {
       const m = /^\/?\s*([a-d])\b/i.exec(text);
       const choice = m ? (m[1].toUpperCase()) : undefined;
       
+      console.log(`🔍 Checking message: "${text}" -> choice: ${choice}`);
+      
       if (choice) {
         console.log(`🎯 Quiz answer from ${userId}: ${choice}`);
         const roundId = getCurrentRoundIdSync();
+        console.log(`🎮 Current round ID: ${roundId}`);
+        
         if (roundId && ingestAnswer) {
-          await ingestAnswer(roundId, userId, choice);
-          console.log(`✅ Answer recorded: ${userId} -> ${choice}`);
+          try {
+            await ingestAnswer(roundId, userId, choice);
+            console.log(`✅ Answer recorded: ${userId} -> ${choice}`);
+          } catch (err) {
+            console.log(`❌ Answer recording failed: ${err.message}`);
+          }
+        } else {
+          console.log(`⚠️ Cannot record answer - roundId: ${roundId}, ingestAnswer: ${!!ingestAnswer}`);
         }
       }
     });
