@@ -1,0 +1,289 @@
+[
+  {
+    "id": "crypto_001",
+    "type": "text",
+    "question": "What is the maximum supply of Bitcoin?",
+    "options": ["18 million", "21 million", "25 million", "100 million"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["crypto", "bitcoin"],
+    "durationSec": 15,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_002",
+    "type": "text",
+    "question": "Which blockchain does Ethereum use?",
+    "options": ["Proof of Work", "Proof of Stake", "Proof of Authority", "Delegated Proof of Stake"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["crypto", "ethereum"],
+    "durationSec": 20,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_003",
+    "type": "text",
+    "question": "What does DeFi stand for?",
+    "options": ["Digital Finance", "Decentralized Finance", "Distributed Finance", "Direct Finance"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["crypto", "defi"],
+    "durationSec": 15,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_004",
+    "type": "text",
+    "question": "Which exchange is known as the largest crypto exchange by volume?",
+    "options": ["Coinbase", "Binance", "Kraken", "FTX"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["crypto", "exchanges"],
+    "durationSec": 15,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_005",
+    "type": "text",
+    "question": "What is a smart contract?",
+    "options": ["A legal document", "Self-executing code on blockchain", "A crypto wallet", "A mining algorithm"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["crypto", "smart-contracts"],
+    "durationSec": 20,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_006",
+    "type": "text",
+    "question": "Which consensus mechanism does Bitcoin use?",
+    "options": ["Proof of Stake", "Proof of Work", "Proof of Authority", "Proof of History"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["crypto", "bitcoin", "consensus"],
+    "durationSec": 20,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_007",
+    "type": "text",
+    "question": "What does NFT stand for?",
+    "options": ["Non-Fungible Token", "New Financial Technology", "Network File Transfer", "Next Future Tech"],
+    "correct": "A",
+    "difficulty": "easy",
+    "tags": ["crypto", "nft"],
+    "durationSec": 15,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_008",
+    "type": "text",
+    "question": "Which blockchain is Solana built on?",
+    "options": ["Its own blockchain", "Ethereum", "Bitcoin", "Binance Smart Chain"],
+    "correct": "A",
+    "difficulty": "medium",
+    "tags": ["crypto", "solana"],
+    "durationSec": 20,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_009",
+    "type": "text",
+    "question": "What is the native token of Binance Smart Chain?",
+    "options": ["BTC", "ETH", "BNB", "SOL"],
+    "correct": "C",
+    "difficulty": "easy",
+    "tags": ["crypto", "binance"],
+    "durationSec": 15,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "crypto_010",
+    "type": "text",
+    "question": "What is a crypto wallet's seed phrase used for?",
+    "options": ["Password reset", "Account recovery", "Transaction fees", "Mining rewards"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["crypto", "wallets", "security"],
+    "durationSec": 20,
+    "source": "curated:crypto_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "tech_001",
+    "type": "text",
+    "question": "Which programming language is known as the 'language of the web'?",
+    "options": ["Python", "JavaScript", "Java", "C++"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["tech", "programming"],
+    "durationSec": 15,
+    "source": "curated:tech_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "tech_002",
+    "type": "text",
+    "question": "What does API stand for?",
+    "options": ["Application Programming Interface", "Advanced Programming Integration", "Automated Program Interaction", "Application Process Integration"],
+    "correct": "A",
+    "difficulty": "easy",
+    "tags": ["tech", "api"],
+    "durationSec": 15,
+    "source": "curated:tech_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "tech_003",
+    "type": "text",
+    "question": "Which company developed React.js?",
+    "options": ["Google", "Facebook", "Microsoft", "Apple"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["tech", "react", "frontend"],
+    "durationSec": 20,
+    "source": "curated:tech_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "tech_004",
+    "type": "text",
+    "question": "What does HTML stand for?",
+    "options": ["Hypertext Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlink Text Management Language"],
+    "correct": "A",
+    "difficulty": "easy",
+    "tags": ["tech", "html", "web"],
+    "durationSec": 15,
+    "source": "curated:tech_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "tech_005",
+    "type": "text",
+    "question": "Which database is known as a NoSQL database?",
+    "options": ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+    "correct": "C",
+    "difficulty": "medium",
+    "tags": ["tech", "database", "nosql"],
+    "durationSec": 20,
+    "source": "curated:tech_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "general_001",
+    "type": "text",
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["general", "space"],
+    "durationSec": 15,
+    "source": "curated:general_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "general_002",
+    "type": "text",
+    "question": "What is the capital of Japan?",
+    "options": ["Osaka", "Kyoto", "Tokyo", "Hiroshima"],
+    "correct": "C",
+    "difficulty": "easy",
+    "tags": ["general", "geography"],
+    "durationSec": 15,
+    "source": "curated:general_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "general_003",
+    "type": "text",
+    "question": "Which element has the chemical symbol 'Au'?",
+    "options": ["Silver", "Gold", "Aluminum", "Argon"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["general", "chemistry"],
+    "durationSec": 20,
+    "source": "curated:general_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "general_004",
+    "type": "text",
+    "question": "In which year did World War II end?",
+    "options": ["1944", "1945", "1946", "1947"],
+    "correct": "B",
+    "difficulty": "medium",
+    "tags": ["general", "history"],
+    "durationSec": 20,
+    "source": "curated:general_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "general_005",
+    "type": "text",
+    "question": "What is the largest ocean on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correct": "D",
+    "difficulty": "easy",
+    "tags": ["general", "geography"],
+    "durationSec": 15,
+    "source": "curated:general_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "visual_001",
+    "type": "image",
+    "question": "What programming language logo is this?",
+    "media": [
+      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png" }
+    ],
+    "options": ["Python", "JavaScript", "Java", "TypeScript"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["tech", "visual", "programming"],
+    "durationSec": 25,
+    "source": "curated:visual_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "visual_002",
+    "type": "image",
+    "question": "Which cryptocurrency logo is shown?",
+    "media": [
+      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/400px-Bitcoin.svg.png" }
+    ],
+    "options": ["Ethereum", "Bitcoin", "Litecoin", "Dogecoin"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["crypto", "visual", "bitcoin"],
+    "durationSec": 20,
+    "source": "curated:visual_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  },
+  {
+    "id": "visual_003",
+    "type": "image",
+    "question": "What is this famous landmark?",
+    "media": [
+      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Eiffel_Tower%2C_Paris_13_May_2010.jpg/240px-Eiffel_Tower%2C_Paris_13_May_2010.jpg" }
+    ],
+    "options": ["Big Ben", "Eiffel Tower", "Statue of Liberty", "Leaning Tower of Pisa"],
+    "correct": "B",
+    "difficulty": "easy",
+    "tags": ["general", "visual", "landmarks"],
+    "durationSec": 20,
+    "source": "curated:visual_v1",
+    "updatedAt": "2025-09-26T00:00:00Z"
+  }
+]
+
+

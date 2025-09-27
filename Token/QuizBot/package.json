@@ -1,0 +1,36 @@
+{
+  "name": "quizbot-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "pnpm -C apps/web dev",
+    "dev:api": "pnpm -C apps/api dev",
+    "dev": "concurrently \"pnpm -C apps/web dev\" \"pnpm -C apps/api dev\"",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc -b",
+    "build": "pnpm install && pnpm build:api && pnpm build:web",
+    "build:web": "pnpm -C apps/web build",
+    "build:api": "pnpm -C apps/api build",
+    "start": "pnpm -C apps/api start",
+    "start:api": "pnpm -C apps/api start",
+    "db:generate": "pnpm -C apps/api db:generate",
+    "db:push": "pnpm -C apps/api db:push",
+    "db:migrate": "pnpm -C apps/api db:migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "@vitejs/plugin-react": "^4.3.2"
+  }
+}
+
+

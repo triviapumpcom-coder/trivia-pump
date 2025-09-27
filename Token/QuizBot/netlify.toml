@@ -1,0 +1,27 @@
+[build]
+  base = "/"
+  publish = "apps/web/dist"
+  command = "pnpm build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--version"
+
+[[functions]]
+  path = "apps/api/src"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "pnpm dev"
+  port = 5176
+  targetPort = 5001
