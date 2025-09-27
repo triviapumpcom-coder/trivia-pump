@@ -614,7 +614,8 @@ try {
       
       const text = (msg.message || "").trim();
       const userId = msg.account || msg.displayName || msg.username || "unknown";
-      const userName = msg.username || msg.displayName || (userId.length > 8 ? `${userId.slice(0, 4)}...${userId.slice(-4)}` : userId);
+      // Use wallet address as username (like in TopHolders)
+      const userName = userId.length > 8 ? `${userId.slice(0, 4)}...${userId.slice(-4)}` : userId;
       
       // Background command
       if (text.toLowerCase() === '/background') {
