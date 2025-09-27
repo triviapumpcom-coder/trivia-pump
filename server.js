@@ -2,6 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+// Import Solana integration (using dynamic import for ES modules)
+let solanaIntegration = null;
+(async () => {
+  try {
+    solanaIntegration = await import('./apps/api/dist/integrations/solana.js');
+    console.log('✅ Solana integration loaded successfully');
+  } catch (error) {
+    console.error('❌ Failed to load Solana integration:', error);
+  }
+})();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -21,16 +32,58 @@ app.get('/api/test', (req, res) => {
   });
 });
 
+// Global leaderboard storage (in production, use database)
+let globalLeaderboard = new Map();
+
 app.get('/api/leaderboard/weekly', (req, res) => {
-  const mockLeaderboard = [
-    { id: "user1", score: 150, rank: 1 },
-    { id: "user2", score: 120, rank: 2 },
-    { id: "user3", score: 100, rank: 3 },
-    { id: "user4", score: 85, rank: 4 },
-    { id: "user5", score: 70, rank: 5 },
-    { id: "user6", score: 55, rank: 6 }
-  ];
-  res.json(mockLeaderboard);
+  // Convert Map to array and sort by score
+  const leaderboardArray = Array.from(globalLeaderboard.entries())
+    .map(([userId, data]) => ({
+      userId: userId,
+      name: data.name || `Player ${userId.slice(-4)}`,
+      score: data.score || 0,
+      lastActive: data.lastActive || Date.now()
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 20); // Top 20 players
+
+  // If no real data, show empty leaderboard (will show "No players yet")
+  const response = {
+    items: leaderboardArray
+  };
+  
+  res.json(response);
+});
+
+// Add score to leaderboard (called when user answers correctly)
+app.post('/api/leaderboard/add-score', (req, res) => {
+  const { userId, name, score, roundId } = req.body;
+  
+  if (!userId || typeof score !== 'number') {
+    return res.status(400).json({ error: 'Missing userId or score' });
+  }
+  
+  // Get existing user data or create new
+  const existingData = globalLeaderboard.get(userId) || { score: 0, name: name || `Player ${userId.slice(-4)}` };
+  
+  // Add score (cumulative)
+  const newScore = existingData.score + score;
+  
+  // Update leaderboard
+  globalLeaderboard.set(userId, {
+    name: name || existingData.name,
+    score: newScore,
+    lastActive: Date.now(),
+    lastRoundId: roundId
+  });
+  
+  console.log(`📊 Added ${score} points to ${name || userId.slice(-4)} (Total: ${newScore})`);
+  
+  res.json({ 
+    success: true, 
+    newScore: newScore,
+    totalPlayers: globalLeaderboard.size 
+  });
 });
 
 app.get('/api/game/current', (req, res) => {
@@ -104,19 +157,50 @@ app.get('/api/token/stats', async (req, res) => {
     return res.status(400).json({ error: 'Missing mint parameter' });
   }
 
-  // MESA token data
-  if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
-    const tokenStats = {
-      mint: '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump',
-      name: 'Black Mesa Research Facility',
-      symbol: 'MESA',
-      supply: 999993815.426257,
-      holders: 2438,
-      marketCap: 297855,
-      price: 0.0002978
-    };
+  try {
+    // Try to get real data from Solana
+    if (solanaIntegration && solanaIntegration.getTokenStats) {
+      console.log(`📊 Fetching real token stats for: ${mint}`);
+      const tokenStats = await solanaIntegration.getTokenStats(mint);
+      
+      if (tokenStats) {
+        console.log('✅ Real token stats retrieved');
+        return res.json(tokenStats);
+      }
+    }
     
-    return res.json(tokenStats);
+    // Fallback to mock data for MESA token
+    if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
+      console.log('⚠️ Using fallback MESA token data');
+      const tokenStats = {
+        mint: '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump',
+        name: 'Black Mesa Research Facility',
+        symbol: 'MESA',
+        supply: 999993815.426257,
+        holders: 2438,
+        marketCap: 297855,
+        price: 0.0002978
+      };
+      
+      return res.json(tokenStats);
+    }
+  } catch (error) {
+    console.error('❌ Error fetching token stats:', error);
+    
+    // Fallback for any error
+    if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
+      const tokenStats = {
+        mint: '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump',
+        name: 'Black Mesa Research Facility',
+        symbol: 'MESA',
+        supply: 999993815.426257,
+        holders: 2438,
+        marketCap: 297855,
+        price: 0.0002978
+      };
+      
+      return res.json(tokenStats);
+    }
   }
 
   // Fallback
@@ -133,47 +217,104 @@ app.get('/api/token/stats', async (req, res) => {
   res.json(mockStats);
 });
 
-app.get('/api/token/top-holders', (req, res) => {
+app.get('/api/token/top-holders', async (req, res) => {
   const { mint } = req.query;
   
   if (!mint) {
     return res.status(400).json({ error: 'Missing mint parameter' });
   }
 
-  const mockHolders = [
-    {
-      address: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
-      amount: 45000000,
-      percentage: 4.5
-    },
-    {
-      address: "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
-      amount: 32000000,
-      percentage: 3.2
-    },
-    {
-      address: "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
-      amount: 28000000,
-      percentage: 2.8
-    },
-    {
-      address: "6dXnceUGRZQQAhsEEgdLtMSAl5oGSt6L3CjYhKGKkFvY",
-      amount: 25000000,
-      percentage: 2.5
-    },
-    {
-      address: "8HNdnxvfczxiN1UVeVBHqRNvqvgzfSeD2QpzdGyhPQxR",
-      amount: 22000000,
-      percentage: 2.2
+  try {
+    // Try to get real data from Solana
+    if (solanaIntegration && solanaIntegration.getTopHolders_Legacy) {
+      console.log(`👑 Fetching real top holders for: ${mint}`);
+      const realHolders = await solanaIntegration.getTopHolders_Legacy(mint);
+      
+      if (realHolders && realHolders.length > 0) {
+        console.log(`✅ Real top holders retrieved: ${realHolders.length} holders`);
+        const response = {
+          mint: mint,
+          holders: realHolders.slice(0, 10) // Show top 10
+        };
+        return res.json(response);
+      }
     }
-  ];
+    
+    console.log('⚠️ Using fallback holder data');
+    // Fallback mock data
+    const mockHolders = [
+      {
+        address: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+        amount: 45000000,
+        percentage: 4.5
+      },
+      {
+        address: "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+        amount: 32000000,
+        percentage: 3.2
+      },
+      {
+        address: "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        amount: 28000000,
+        percentage: 2.8
+      },
+      {
+        address: "6dXnceUGRZQQAhsEEgdLtMSAl5oGSt6L3CjYhKGKkFvY",
+        amount: 25000000,
+        percentage: 2.5
+      },
+      {
+        address: "8HNdnxvfczxiN1UVeVBHqRNvqvgzfSeD2QpzdGyhPQxR",
+        amount: 22000000,
+        percentage: 2.2
+      }
+    ];
 
-  const response = {
-    mint: mint,
-    holders: mockHolders
-  };
+    const response = {
+      mint: mint,
+      holders: mockHolders
+    };
 
-  res.json(response);
+    res.json(response);
+  } catch (error) {
+    console.error('❌ Error fetching top holders:', error);
+    
+    // Fallback mock data on error
+    const mockHolders = [
+      {
+        address: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+        amount: 45000000,
+        percentage: 4.5
+      },
+      {
+        address: "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+        amount: 32000000,
+        percentage: 3.2
+      },
+      {
+        address: "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+        amount: 28000000,
+        percentage: 2.8
+      },
+      {
+        address: "6dXnceUGRZQQAhsEEgdLtMSAl5oGSt6L3CjYhKGKkFvY",
+        amount: 25000000,
+        percentage: 2.5
+      },
+      {
+        address: "8HNdnxvfczxiN1UVeVBHqRNvqvgzfSeD2QpzdGyhPQxR",
+        amount: 22000000,
+        percentage: 2.2
+      }
+    ];
+
+    const response = {
+      mint: mint,
+      holders: mockHolders
+    };
+
+    res.json(response);
+  }
 });
 
 // Alternative routes for compatibility (forward to correct handlers)

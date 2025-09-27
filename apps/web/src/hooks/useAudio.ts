@@ -102,7 +102,6 @@ export function useAudio(soundType: SoundType, options: UseAudioOptions = {}) {
     try {
       // Don't play if user hasn't interacted yet
       if (!state.userInteracted) {
-        console.log(`⏸️ Waiting for user interaction to play ${soundType}`);
         return;
       }
 
@@ -121,18 +120,13 @@ export function useAudio(soundType: SoundType, options: UseAudioOptions = {}) {
       
       if (playPromise !== undefined) {
         await playPromise;
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`🔊 Successfully played ${soundType}`);
-        }
       }
     } catch (error: any) {
       // Handle specific error types
       if (error.name === 'NotAllowedError') {
-        console.log(`🔇 Browser blocked autoplay for ${soundType} - waiting for user interaction`);
         setState(prev => ({ ...prev, userInteracted: false }));
-      } else if (error.name === 'AbortError') {
-        console.log(`⏹️ Audio playback interrupted for ${soundType} (normal behavior)`);
-      } else {
+      } else if (error.name !== 'AbortError') {
+        // Only log non-abort errors
         console.warn(`❌ Failed to play sound ${soundType}:`, error);
         setState(prev => ({ 
           ...prev, 
@@ -150,9 +144,6 @@ export function useAudio(soundType: SoundType, options: UseAudioOptions = {}) {
         audioRef.current.currentTime = 0;
         // Completely reload the audio file
         audioRef.current.load();
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`🔇 Aggressively stopped sound: ${soundType}`);
-        }
       } catch (error) {
         console.warn(`Error stopping sound ${soundType}:`, error);
       }

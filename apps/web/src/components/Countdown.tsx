@@ -20,10 +20,7 @@ export function Countdown({ endsAtMs, durationSec = 30, isActive = true, enableS
   // Timer only runs when countdown is active
   React.useEffect(() => {
     if (!isActive) {
-      console.log('⏹️ Countdown timer stopped - isActive:', isActive);
-      
       // FORCE STOP ALL COUNTDOWN SOUNDS
-      console.log('🔇 STOPPING ALL COUNTDOWN SOUNDS - isActive false');
       tickSound.stop();
       tickUrgentSound.stop();
       finalBeepSound.stop();
@@ -32,10 +29,8 @@ export function Countdown({ endsAtMs, durationSec = 30, isActive = true, enableS
       return;
     }
     
-    console.log('▶️ Countdown timer started - isActive:', isActive);
     const id = setInterval(() => force(), 200);
     return () => {
-      console.log('🛑 Countdown timer cleanup');
       clearInterval(id);
     };
   }, [isActive, tickSound, tickUrgentSound, finalBeepSound, timeUpSound]);
@@ -43,13 +38,11 @@ export function Countdown({ endsAtMs, durationSec = 30, isActive = true, enableS
   // Reset previous seconds when countdown starts/restarts or when component mounts
   React.useEffect(() => {
     prevSecondsRef.current = null;
-    console.log('Reset prevSecondsRef - isActive:', isActive, 'endsAtMs:', endsAtMs);
   }, [isActive, endsAtMs]);
   
   // Also reset on component mount
   React.useEffect(() => {
     prevSecondsRef.current = null;
-    console.log('Component mounted - reset prevSecondsRef');
   }, []);
 
   const now = Date.now();
@@ -65,17 +58,11 @@ export function Countdown({ endsAtMs, durationSec = 30, isActive = true, enableS
   React.useEffect(() => {
     const prevSeconds = prevSecondsRef.current;
     
-    // Debug log (only in development)
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`Countdown: ${remainingSec}s, isActive: ${isActive}`);
-    }
-    
     // Only play sounds if round is active, sounds enabled, and seconds actually changed
     if (isActive && enableSounds && prevSeconds !== null && prevSeconds !== remainingSec) {
       
       if (remainingSec === 0 && prevSeconds === 1) {
-        // Time's up! (1 → 0) - This sound plays but then stops
-        console.log('🔔 Playing time-up sound - COUNTDOWN FINISHED');
+        // Time's up! (1 → 0)
         timeUpSound.play();
         
       } else if (isEffectivelyActive) {
@@ -83,28 +70,21 @@ export function Countdown({ endsAtMs, durationSec = 30, isActive = true, enableS
         
         if (remainingSec === 1 && prevSeconds === 2) {
           // Final beep at 1 second (2 → 1)
-          console.log('⚠️ Playing final-beep sound');
           finalBeepSound.play();
           
         } else if (remainingSec <= 3 && remainingSec > 1 && prevSeconds > remainingSec) {
           // Urgent tick for 3-2 seconds
-          console.log('🚨 Playing urgent tick sound');
           tickUrgentSound.play();
           
         } else if (remainingSec <= 10 && remainingSec > 3 && prevSeconds > remainingSec) {
           // Normal tick for 10-4 seconds
-          console.log('⏰ Playing normal tick sound');
           tickSound.play();
           
         } else if (remainingSec > 10 && prevSeconds > remainingSec) {
           // Tick for all seconds above 10 (full countdown)
-          console.log('🕐 Playing full countdown tick sound');
           tickSound.play();
         }
       }
-    } else if (!enableSounds && prevSeconds !== remainingSec) {
-      // If sounds are disabled, just log
-      console.log(`🔇 Silent countdown: ${remainingSec}s (sounds disabled)`);
     }
     
     prevSecondsRef.current = remainingSec;

@@ -147,6 +147,39 @@ export const useGameStore = create<GameStore>((set) => ({
           : rg
       );
 
+      // Add scores to leaderboard for winners
+      if (payload.winners && payload.winners.length > 0) {
+        payload.winners.forEach(async (winner) => {
+          try {
+            // Calculate score based on position and speed
+            let score = 0;
+            if (winner.rank === 1) score = 100; // First place
+            else if (winner.rank === 2) score = 75; // Second place  
+            else if (winner.rank === 3) score = 50; // Third place
+            else score = 25; // Other correct answers
+            
+            // Bonus for speed (if latency < 5 seconds)
+            const latency = s.latencies[winner.id];
+            if (latency && latency < 5) {
+              score += 10;
+            }
+            
+            await fetch('/api/leaderboard/add-score', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                userId: winner.id,
+                name: winner.name,
+                score: score,
+                roundId: payload.id
+              })
+            });
+          } catch (error) {
+            console.warn('Failed to update leaderboard:', error);
+          }
+        });
+      }
+
       return {
         round: {
           ...s.round,
