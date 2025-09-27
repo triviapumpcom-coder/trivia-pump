@@ -338,6 +338,22 @@ try {
           try {
             await ingestAnswer(roundId, userId, choice);
             console.log(`✅ Answer recorded: ${userId} -> ${choice}`);
+            
+            // Broadcast answer to frontend for live updates
+            const answerEvent = {
+              id: `answer_${Date.now()}`,
+              type: "answer",
+              text: `@${userId.slice(0, 6)}... answered ${choice}`,
+              timestamp: Date.now(),
+              userId: userId,
+              choice: choice,
+              status: "accepted",
+              roundId: roundId
+            };
+            
+            io.emit("feed:event", answerEvent);
+            console.log(`📡 Answer broadcasted to frontend: ${choice}`);
+            
           } catch (err) {
             console.log(`❌ Answer recording failed: ${err.message}`);
           }
