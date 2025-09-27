@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { App } from "./modules/App";
 import "./styles.css";
 
+// Force rebuild - contract address update
+
 const queryClient = new QueryClient();
 
 const container = document.getElementById("root");
