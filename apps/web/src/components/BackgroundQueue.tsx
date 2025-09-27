@@ -19,18 +19,19 @@ export function BackgroundQueue(): JSX.Element {
         />
       )}
       
-      {/* Flash Effects */}
-      {flashes.map((flash) => (
-        <div
-          key={flash.id}
-          className={`absolute inset-0 transition-opacity duration-${flash.duration} ${
-            flash.type === 'correct' ? 'bg-green-500/20' : 
-            flash.type === 'incorrect' ? 'bg-red-500/20' : 
-            'bg-blue-500/20'
-          }`}
-          style={{ opacity: flash.active ? 1 : 0 }}
-        />
-      ))}
+      {/* Flash Effects for each choice */}
+      {flashes && Object.entries(flashes).map(([choice, intensity]) => 
+        intensity > 0 ? (
+          <div
+            key={choice}
+            className="absolute inset-0 transition-opacity duration-100"
+            style={{ 
+              backgroundColor: `rgba(34, 197, 94, ${intensity * 0.2})`, // Green flash
+              opacity: intensity
+            }}
+          />
+        ) : null
+      )}
     </div>
   );
 }
