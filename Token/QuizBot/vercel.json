@@ -1,17 +1,19 @@
 {
+  "buildCommand": "cd apps/web && npm install && npm run build",
+  "outputDirectory": "apps/web/dist",
+  "installCommand": "npm install",
   "functions": {
     "api/**/*.ts": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node@3.0.0"
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "VITE_CONTRACT_ADDRESS": "5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump"
+  }
 }
