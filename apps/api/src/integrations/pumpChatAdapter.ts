@@ -42,15 +42,24 @@ export async function startPumpChatIntegration(
       pumpSocket.emit("join", { room: contractAddress, type: "chat" });
     });
 
+    // Debug: Listen to ALL events
+    pumpSocket.onAny((eventName: string, ...args: any[]) => {
+      console.log(`🔍 [pumpChat] Event received: ${eventName}`, JSON.stringify(args, null, 2));
+    });
+
     const chatEvents = ["message", "chat", "newMessage", "messageReceived"];
     chatEvents.forEach((event) => {
       pumpSocket.on(event, (data: any) => {
+        console.log(`🔍 [pumpChat] ${event} event:`, JSON.stringify(data, null, 2));
         if (data && (data.username || data.user || data.account) && data.message) {
+          console.log(`✅ [pumpChat] Valid message found, calling onMessage`);
           onMessage({
             account: data.account || data.user || data.username,
             displayName: data.username || data.user,
             message: data.message,
           });
+        } else {
+          console.log(`⚠️ [pumpChat] Invalid message format:`, data);
         }
       });
     });
