@@ -630,7 +630,9 @@ try {
         const round = getCurrentRound();
         if (round && ingestAnswer) {
           await ingestAnswer(round.id, userId, choice);
-          io.emit("feed:event", {
+          
+          // Broadcast both feed:event and answer:accepted
+          const answerData = {
             id: `answer_${Date.now()}`,
             type: "answer",
             text: `@${userId.slice(0, 6)}... answered ${choice}`,
@@ -639,8 +641,17 @@ try {
             choice: choice,
             status: "accepted",
             roundId: round.id
+          };
+          
+          io.emit("feed:event", answerData);
+          io.emit("answer:accepted", {
+            roundId: round.id,
+            userId: userId,
+            choice: choice,
+            status: "accepted"
           });
-          console.log(`📡 BROADCAST: ${choice}`);
+          
+          console.log(`📡 BROADCAST: ${choice} (both feed:event and answer:accepted)`);
         }
       }
     } catch (err) {
