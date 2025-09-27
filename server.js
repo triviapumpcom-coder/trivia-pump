@@ -199,6 +199,15 @@ io.on('connection', (socket) => {
 app.use(cors());
 app.use(express.json());
 
+// 🎮 GLOBAL ROUND STATE
+let currentRound = null;
+let ws = null;
+
+// Helper function to get current round
+function getCurrentRound() {
+  return currentRound;
+}
+
 // 🎮 OVERRIDE /api/game/current BEFORE TypeScript routes
 app.get('/api/game/current', (req, res) => {
   const round = getCurrentRound();
@@ -245,8 +254,6 @@ try {
 }
 
 // 🎮 START QUIZ ENGINE WITH 250 QUESTIONS (CommonJS compatible)
-let currentRound = null;
-let ws = null;
 
 try {
   const { startRoundLoop } = require('./apps/api/dist/game/engine.js');
