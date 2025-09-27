@@ -33,7 +33,7 @@ app.get("/api/debug/round", (_req: Request, res: Response) => {
   res.json({ currentRoundId: getCurrentRoundIdSync() });
 });
 app.get("/api/debug/answers", async (_req: Request, res: Response) => {
-  const id = getCurrentRoundId();
+  const id = getCurrentRoundIdSync();
   if (!id) return res.json({});
   const dump = await debugDumpRound(id);
   res.json(dump);
