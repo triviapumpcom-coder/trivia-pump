@@ -176,6 +176,17 @@ app.get('/api/token/top-holders', (req, res) => {
   res.json(response);
 });
 
+// Alternative routes for compatibility (redirect to correct endpoints)
+app.get('/api/token/:mint/stats', (req, res) => {
+  const { mint } = req.params;
+  res.redirect(`/api/token/stats?mint=${mint}`);
+});
+
+app.get('/api/token/:mint/top-holders', (req, res) => {
+  const { mint } = req.params;
+  res.redirect(`/api/token/top-holders?mint=${mint}`);
+});
+
 // Serve static files from React build
 app.use(express.static(path.join(__dirname, 'apps/web/dist')));
 
