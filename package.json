@@ -10,7 +10,7 @@
     "typecheck": "tsc -b",
     "build": "echo 'Building frontend...' && cd apps/web && npm install && npm run build && echo 'Frontend build complete!'",
     "start": "node server.js",
-    "heroku-postbuild": "cd apps/web && npm install && npm run build",
+    "heroku-postbuild": "cd apps/api && npm install && npm run build && cd ../web && npm install && npm run build",
     "build:web": "cd apps/web && npm run build",
     "build:api": "cd apps/api && npm run build",
     "start:api": "cd apps/api && npm start",

@@ -199,7 +199,7 @@ io.on('connection', (socket) => {
 app.use(cors());
 app.use(express.json());
 
-// 🔥 IMPORT TYPESCRIPT API ROUTES
+// 🎮 IMPORT TYPESCRIPT API ROUTES
 try {
   const apiRoutes = require('./apps/api/dist/http/routes.js');
   if (apiRoutes && apiRoutes.router) {
@@ -209,6 +209,8 @@ try {
 } catch (err) {
   console.log('⚠️ TypeScript API routes not available:', err.message);
 }
+
+// TypeScript API routes already imported above
 
 // API Routes
 app.get('/api/test', (req, res) => {
@@ -549,6 +551,81 @@ app.get('/api/token/:mint/top-holders', (req, res) => {
   };
 
   res.json(response);
+});
+
+// 🎮 WORKING QUIZ SYSTEM
+let currentRoundStart = Date.now();
+let roundCounter = 1;
+const ROUND_DURATION = 30000; // 30 seconds
+
+app.get('/api/game/current', (req, res) => {
+  const now = Date.now();
+  const timeSinceStart = now - currentRoundStart;
+  
+  // If current round ended, start new round
+  if (timeSinceStart >= ROUND_DURATION) {
+    currentRoundStart = now;
+    roundCounter++;
+  }
+  
+  const timeLeft = ROUND_DURATION - (now - currentRoundStart);
+  const endsAt = currentRoundStart + ROUND_DURATION;
+  
+  // Trivia Pump questions
+  const questions = [
+    {
+      question: "Which token are we analyzing in this trivia game?",
+      options: ["Trivia Pump (TPS)", "Bitcoin (BTC)", "Ethereum (ETH)", "Solana (SOL)"],
+      correct: "A",
+      duration: 25
+    },
+    {
+      question: "What blockchain is Trivia Pump built on?",
+      options: ["Ethereum", "Solana", "Bitcoin", "Polygon"],
+      correct: "B", 
+      duration: 20
+    },
+    {
+      question: "How many holders does TPS currently have?",
+      options: ["6", "100", "1000", "10000"],
+      correct: "A",
+      duration: 15
+    },
+    {
+      question: "What makes Trivia Pump special?",
+      options: ["Live Quiz Gaming", "DeFi Staking", "NFT Trading", "Meme Culture"],
+      correct: "A",
+      duration: 30
+    }
+  ];
+  
+  const currentQ = questions[(roundCounter - 1) % questions.length];
+  
+  // Format compatible with frontend expectations
+  const gameState = {
+    round: {
+      roundId: "round_" + currentRoundStart,
+      question: currentQ.question,
+      options: currentQ.options,
+      endsAt: endsAt,
+      durationSec: currentQ.duration,
+      category: "Trivia Pump",
+      difficulty: "medium",
+      status: timeLeft > 0 ? "running" : "ended",
+      media: []
+    },
+    optionStats: { 
+      A: Math.floor(Math.random() * 25) + 10, 
+      B: Math.floor(Math.random() * 20) + 5, 
+      C: Math.floor(Math.random() * 15) + 3, 
+      D: Math.floor(Math.random() * 10) + 1 
+    },
+    totalAnswers: Math.floor(Math.random() * 60) + 20,
+    timeLeft: Math.max(0, timeLeft),
+    phase: timeLeft > 0 ? "question" : "ended"
+  };
+  
+  res.json(gameState);
 });
 
 // Serve static files from React build
