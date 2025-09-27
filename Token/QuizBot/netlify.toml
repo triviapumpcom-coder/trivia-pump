@@ -6,6 +6,7 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--version"
+  NODE_ENV = "production"
 
 # Functions disabled - using external API server
 
