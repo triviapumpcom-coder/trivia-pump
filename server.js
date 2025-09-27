@@ -311,7 +311,9 @@ try {
       const text = raw.trim();
       const userId = msg.account || msg.displayName || "unknown";
       
-      console.log(`💬 Live chat message: ${userId}: ${text}`);
+      console.log(`💬 Live chat message received!`);
+      console.log(`💬 User: ${userId}`);
+      console.log(`💬 Message: "${text}"`);
       
       // Check for background change command
       if (text.toLowerCase() === '/background') {
