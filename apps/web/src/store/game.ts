@@ -125,6 +125,7 @@ export const useGameStore = create<GameStore>((set) => ({
     }),
   setRoundEnd: (payload) =>
     set((s) => {
+      console.log("🔍 GAME STORE: setRoundEnd called with:", JSON.stringify(payload, null, 2));
       const now = Date.now();
       const updatedRoundGroups = s.roundGroups.map(rg => 
         rg.roundId === payload.id 
@@ -194,17 +195,18 @@ export const useGameStore = create<GameStore>((set) => ({
         roundGroups: updatedRoundGroups,
         winnersHistory:
           payload.winners && payload.winners.length
-            ? [
-                ...s.winnersHistory,
-                {
+            ? (() => {
+                const newWinnersEntry = {
                   roundId: payload.id,
                   winners: payload.winners.map((w) => ({
                     ...w,
                     score: s.scores[w.id] ?? 0,
                     latencySec: s.latencies[w.id] ?? null,
                   })),
-                },
-              ].slice(-10)
+                };
+                console.log("🔍 GAME STORE: Adding to winnersHistory:", JSON.stringify(newWinnersEntry, null, 2));
+                return [...s.winnersHistory, newWinnersEntry].slice(-10);
+              })()
             : s.winnersHistory,
         phase: 'reveal',
       };
