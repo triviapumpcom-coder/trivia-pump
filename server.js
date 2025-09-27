@@ -306,53 +306,7 @@ app.post('/api/leaderboard/add-score', (req, res) => {
 // Remove mock - let TypeScript API handle this
 // app.get('/api/game/current' is handled by TypeScript API
 
-app.get('/api/events/recent', (req, res) => {
-  const mockEvents = [
-    {
-      id: "event_1",
-      type: "answer",
-      text: "@user123 answered A",
-      timestamp: Date.now() - 5000,
-      userId: "user123",
-      choice: "A",
-      status: "accepted",
-      roundId: "round_1"
-    },
-    {
-      id: "event_2", 
-      type: "answer",
-      text: "@user456 answered B",
-      timestamp: Date.now() - 3000,
-      userId: "user456",
-      choice: "B", 
-      status: "accepted",
-      roundId: "round_1"
-    }
-  ];
-  res.json(mockEvents);
-});
-
-app.get('/api/winners/recent', (req, res) => {
-  const mockWinners = [
-    {
-      id: "winner_1",
-      userId: "user123",
-      roundId: "round_1",
-      correctAnswers: 15,
-      latency: 2.3,
-      timestamp: Date.now() - 60000
-    },
-    {
-      id: "winner_2", 
-      userId: "user456",
-      roundId: "round_2",
-      correctAnswers: 12,
-      latency: 3.1,
-      timestamp: Date.now() - 120000
-    }
-  ];
-  res.json(mockWinners);
-});
+// Mock events and winners endpoints removed - using real TypeScript API
 
 app.get('/api/token/stats', async (req, res) => {
   // Use environment contract address
