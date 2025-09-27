@@ -24,22 +24,17 @@ router.get("/leaderboard/weekly", async (req, res) => {
     const limit = Number(req.query.limit ?? 50);
     const redis = getRedis();
     
-    // Clean up any existing mock data (one-time cleanup)
-    const mockUsers = ["user1", "user2", "user3", "user4", "user5"];
-    for (const user of mockUsers) {
-      await (redis as any).zrem("scores:weekly", user);
-    }
-    
     const flat = await (redis as any).zrevrange("scores:weekly", 0, limit - 1, "WITHSCORES");
     const items: Array<{ userId: string; name: string; score: number }> = [];
     for (let i = 0; i < flat.length; i += 2) {
       const userId = flat[i];
       const score = Number(flat[i + 1] ?? 0);
-      items.push({ userId, name: userId, score });
+      items.push({ userId, name: `Player ${userId.slice(-4)}`, score }); // Default name for now
     }
-    res.json({ items, nextCursor: null });
+    
+    res.json({ items });
   } catch (error) {
-    console.error("Leaderboard error:", error);
+    console.error("Error fetching weekly leaderboard:", error);
     res.status(500).json({ error: "Failed to fetch leaderboard" });
   }
 });
