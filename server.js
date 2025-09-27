@@ -176,15 +176,57 @@ app.get('/api/token/top-holders', (req, res) => {
   res.json(response);
 });
 
-// Alternative routes for compatibility (redirect to correct endpoints)
-app.get('/api/token/:mint/stats', (req, res) => {
+// Alternative routes for compatibility (forward to correct handlers)
+app.get('/api/token/:mint/stats', async (req, res) => {
   const { mint } = req.params;
-  res.redirect(`/api/token/stats?mint=${mint}`);
+  
+  // MESA token data
+  if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
+    const tokenStats = {
+      name: "MESA",
+      symbol: "MESA", 
+      marketCap: 2847291,
+      holders: 1337,
+      price: 0.002847291
+    };
+    return res.json(tokenStats);
+  }
+  
+  res.status(404).json({ error: 'Token not found' });
 });
 
 app.get('/api/token/:mint/top-holders', (req, res) => {
   const { mint } = req.params;
-  res.redirect(`/api/token/top-holders?mint=${mint}`);
+  
+  const mockHolders = [
+    {
+      address: "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+      amount: 125000000
+    },
+    {
+      address: "2wmVCSfPxGPjrnMMn7rchp4uaeoTqN39mXFC2zhPdri9",
+      amount: 98500000
+    },
+    {
+      address: "5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1",
+      amount: 87200000
+    },
+    {
+      address: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+      amount: 76800000
+    },
+    {
+      address: "4CkQJBxhU8EZ2UjhigbtdaPbpTe6mqf811fipYBFbSYN",
+      amount: 65400000
+    }
+  ];
+
+  const response = {
+    mint: mint,
+    holders: mockHolders
+  };
+
+  res.json(response);
 });
 
 // Serve static files from React build
