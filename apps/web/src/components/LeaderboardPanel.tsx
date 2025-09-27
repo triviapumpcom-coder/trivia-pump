@@ -56,8 +56,8 @@ export function LeaderboardPanel(): JSX.Element {
       <div className="flex-1 overflow-y-auto scrollbar-hide space-y-1">
         {items.length === 0 && (
           <div className="text-center py-2 text-white/60">
-            <div className="text-lg mb-1">🎯</div>
-            <div className="text-xs">No players yet</div>
+            <div className="text-lg mb-1">⏳</div>
+            <div className="text-xs">Leaders pending</div>
           </div>
         )}
         {(items || []).slice(0, 10).map((it, idx) => (

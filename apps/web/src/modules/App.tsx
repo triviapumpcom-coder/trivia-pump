@@ -163,7 +163,6 @@ export function App(): JSX.Element {
       }, 500); // 500ms delay
     });
     socket.on("answer:accepted", (a: any) => {
-      console.log("🔍 FRONTEND: answer:accepted received:", JSON.stringify(a, null, 2));
       applyAnswer(a);
       
       // Trigger flash effect for the chosen option

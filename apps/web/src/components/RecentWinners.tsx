@@ -4,8 +4,6 @@ import { useGameStore } from "../store/game";
 export function RecentWinners(): JSX.Element {
   const history = useGameStore((s) => s.winnersHistory);
   
-  console.log("🔍 RECENT WINNERS: winnersHistory:", JSON.stringify(history, null, 2));
-  
   return (
     <div className="rounded-2xl bg-black/30 p-2 shadow border border-white/10 h-full flex flex-col">
       <div className="flex items-center justify-between mb-2 flex-shrink-0">
