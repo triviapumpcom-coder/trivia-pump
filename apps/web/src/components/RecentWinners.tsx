@@ -61,7 +61,7 @@ export function RecentWinners(): JSX.Element {
 }
 
 function short(s: string | undefined): string {
-  if (!s) return 'Unknown';
+  if (!s) return 'Player';
   return s.length > 10 ? `${s.slice(0, 4)}…${s.slice(-4)}` : s;
 }
 
