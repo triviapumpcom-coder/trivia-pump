@@ -15,6 +15,10 @@ export function WinnersTicker(): JSX.Element {
   const latencies = useGameStore((s) => s.latencies);
 
   React.useEffect(() => {
+    console.log("🔍 WINNERS TICKER: round:", JSON.stringify(round, null, 2));
+    console.log("🔍 WINNERS TICKER: scores:", JSON.stringify(scores, null, 2));
+    console.log("🔍 WINNERS TICKER: latencies:", JSON.stringify(latencies, null, 2));
+    
     if (round.status === "ended" && round.winners?.length) {
       const list = round.winners.map((w, idx) => {
         const val = scores[w.id] ?? 0;
