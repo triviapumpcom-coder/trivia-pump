@@ -13,6 +13,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        // Force new bundle name to bypass browser cache
+        entryFileNames: `assets/[name]-[hash]-NEW.js`,
+        chunkFileNames: `assets/[name]-[hash]-NEW.js`,
+        assetFileNames: `assets/[name]-[hash]-NEW.[ext]`
+      }
+    }
   },
 });
 
