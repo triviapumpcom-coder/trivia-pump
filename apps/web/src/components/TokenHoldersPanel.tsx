@@ -38,7 +38,7 @@ export function TokenHoldersPanel(): JSX.Element {
   // Very slow smooth scroll animation when page changes
   React.useEffect(() => {
     const scrollContainer = scrollRef.current;
-    if (!scrollContainer || holders.length === 0) return;
+    if (!scrollContainer || !holders || !Array.isArray(holders) || holders.length === 0) return;
 
     // Calculate the height of 5 cards (each card is approximately 60px with spacing)
     const cardHeight = 60; // Approximate height per card including spacing
@@ -73,33 +73,42 @@ export function TokenHoldersPanel(): JSX.Element {
   const load = React.useCallback(async () => {
     console.log('🔍 Loading holders for:', mint);
     
-    // Real API call first (fallback to mock data on error)
-    if (mint !== "demo") {
-      try {
+    try {
+      // Real API call first (fallback to mock data on error)
+      if (mint !== "demo") {
         const response = await fetch(`/api/token/top-holders?mint=${mint}`);
         if (response.ok) {
           const data = await response.json();
           console.log('👑 Holders API response:', data);
           
-          if (data.holders && Array.isArray(data.holders)) {
+          if (data && data.holders && Array.isArray(data.holders) && data.holders.length > 0) {
             // Format the real data to match our interface
-            const formattedHolders = data.holders.map((holder: any) => ({
-              owner: holder.address,
-              amount: holder.amount
-            }));
-            console.log('✅ Using real holders data:', formattedHolders.length, 'holders');
-            setHolders(formattedHolders);
-            return;
+            const formattedHolders = data.holders
+              .filter((holder: any) => holder && (holder.owner || holder.address)) // Filter out invalid entries
+              .map((holder: any) => ({
+                owner: holder.owner || holder.address, // Support both formats
+                amount: Number(holder.amount) || 0
+              }));
+            
+            if (formattedHolders.length > 0) {
+              console.log('✅ Using real holders data:', formattedHolders.length, 'holders');
+              setHolders(formattedHolders);
+              return;
+            }
           }
         }
-      } catch (error) {
-        console.error('❌ Failed to fetch real holders:', error);
       }
+    } catch (error) {
+      console.error('❌ Failed to fetch real holders:', error);
     }
     
     // Fallback to mock data
     console.log('⚠️ Using mock holders data');
-    setHolders(mockHolders);
+    if (Array.isArray(mockHolders) && mockHolders.length > 0) {
+      setHolders(mockHolders);
+    } else {
+      setHolders([]); // Ensure we always set an array
+    }
   }, [mint, mockHolders]);
 
   React.useEffect(() => {
