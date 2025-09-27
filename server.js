@@ -306,7 +306,7 @@ app.post('/api/leaderboard/add-score', (req, res) => {
 // Remove mock - let TypeScript API handle this
 // app.get('/api/game/current' is handled by TypeScript API
 
-// Mock events and winners endpoints removed - using real TypeScript API
+// TypeScript API endpoints should handle these routes
 
 app.get('/api/token/stats', async (req, res) => {
   // Use environment contract address
