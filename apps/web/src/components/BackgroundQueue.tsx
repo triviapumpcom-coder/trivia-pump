@@ -3,17 +3,19 @@ import { useBackgroundStore } from "../store/background";
 import { useFlashStore } from "../store/flash";
 
 export function BackgroundQueue(): JSX.Element {
-  const { queue, currentBackground } = useBackgroundStore();
+  const { queue, currentBackground, backgrounds } = useBackgroundStore();
   const { flashes } = useFlashStore();
+
+  const currentBg = backgrounds[currentBackground];
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
       {/* Background Image */}
-      {currentBackground && (
+      {currentBg && (
         <div 
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
           style={{ 
-            backgroundImage: `url(${currentBackground})`,
+            backgroundImage: currentBg.type === 'gradient' ? currentBg.value : `url(${currentBg.value})`,
             opacity: 0.3
           }}
         />
