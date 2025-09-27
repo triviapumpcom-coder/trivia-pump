@@ -294,88 +294,7 @@ function getCurrentRound() {
 
 // API override moved above TypeScript routes
 
-// 🔥 START LIVE CHAT INTEGRATION (CommonJS compatible)
-console.log('🔍 Attempting to load live chat integration...');
-try {
-  console.log('🔍 Loading pumpChatAdapter...');
-  const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
-  console.log('✅ pumpChatAdapter loaded');
-  
-  console.log('🔍 Loading other modules...');
-  const { getRedis } = require('./apps/api/dist/lib/redis.js');
-  const { floodProtection } = require('./apps/api/dist/security/floodProtection.js');
-  const { ingestAnswer } = require('./apps/api/dist/game/answers.js');
-  const { getCurrentRoundIdSync } = require('./apps/api/dist/game/current.js');
-  console.log('✅ All modules loaded');
-  
-  console.log(`🔥 LIVE CHAT CONTRACT ADDRESS: ${contractAddress}`);
-  if (contractAddress && startPumpChatIntegration) {
-    console.log(`🚀 Starting pump.fun integration for: ${contractAddress}`);
-    startPumpChatIntegration(contractAddress, async (msg) => {
-      // DEBUG: Log full message object
-      console.log(`💬 Raw message object:`, JSON.stringify(msg, null, 2));
-      
-      // normalize message -> detect choice
-      const raw = (msg.message || "");
-      const text = raw.trim();
-      const userId = msg.account || msg.displayName || "unknown";
-      
-      console.log(`💬 Live chat message received!`);
-      console.log(`💬 User: ${userId}`);
-      console.log(`💬 Message: "${text}"`);
-      
-      // Check for background change command
-      if (text.toLowerCase() === '/background') {
-        console.log(`🎨 Background change command from: ${userId}`);
-        io.emit("background:change", { backgroundIndex: Math.floor(Math.random() * 5) });
-        return;
-      }
-      
-      // Detect quiz answer commands
-      const m = /^\/?\s*([a-d])\b/i.exec(text);
-      const choice = m ? (m[1].toUpperCase()) : undefined;
-      
-      console.log(`🔍 Checking message: "${text}" -> choice: ${choice}`);
-      
-      if (choice) {
-        console.log(`🎯 Quiz answer from ${userId}: ${choice}`);
-        const round = getCurrentRound();
-        const roundId = round ? round.id : null;
-        console.log(`🎮 Current round: ${roundId ? `${roundId} (active)` : 'none'}`);
-        
-        if (roundId && ingestAnswer) {
-          try {
-            await ingestAnswer(roundId, userId, choice);
-            console.log(`✅ Answer recorded: ${userId} -> ${choice}`);
-            
-            // Broadcast answer to frontend for live updates
-            const answerEvent = {
-              id: `answer_${Date.now()}`,
-              type: "answer",
-              text: `@${userId.slice(0, 6)}... answered ${choice}`,
-              timestamp: Date.now(),
-              userId: userId,
-              choice: choice,
-              status: "accepted",
-              roundId: roundId
-            };
-            
-            io.emit("feed:event", answerEvent);
-            console.log(`📡 Answer broadcasted to frontend: ${choice}`);
-            
-          } catch (err) {
-            console.log(`❌ Answer recording failed: ${err.message}`);
-          }
-        } else {
-          console.log(`⚠️ Cannot record answer - round: ${roundId ? 'active' : 'none'}, ingestAnswer: ${!!ingestAnswer}`);
-        }
-      }
-    });
-    console.log('✅ Live chat integration started!');
-  }
-} catch (err) {
-  console.log('⚠️ Live chat integration not available:', err.message);
-}
+// Live chat integration moved to server startup
 
 // API Routes
 app.get('/api/test', (req, res) => {
@@ -685,4 +604,86 @@ app.get('*', (req, res) => {
 httpServer.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🔗 WebSocket server ready for connections`);
+  
+  // 🔥 START LIVE CHAT INTEGRATION AFTER SERVER STARTS
+  console.log('🔍 Starting live chat integration after server startup...');
+  setTimeout(() => {
+    try {
+      console.log('🔍 Loading pumpChatAdapter...');
+      const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
+      console.log('✅ pumpChatAdapter loaded');
+      
+      console.log('🔍 Loading other modules...');
+      const { ingestAnswer } = require('./apps/api/dist/game/answers.js');
+      console.log('✅ All modules loaded');
+      
+      console.log(`🔥 LIVE CHAT CONTRACT ADDRESS: ${contractAddress}`);
+      if (contractAddress && startPumpChatIntegration) {
+        console.log(`🚀 Starting pump.fun integration for: ${contractAddress}`);
+        startPumpChatIntegration(contractAddress, async (msg) => {
+          // DEBUG: Log full message object
+          console.log(`💬 Raw message object:`, JSON.stringify(msg, null, 2));
+          
+          // normalize message -> detect choice
+          const raw = (msg.message || "");
+          const text = raw.trim();
+          const userId = msg.account || msg.displayName || msg.username || "unknown";
+          
+          console.log(`💬 Live chat message received!`);
+          console.log(`💬 User: ${userId}`);
+          console.log(`💬 Message: "${text}"`);
+          
+          // Check for background change command
+          if (text.toLowerCase() === '/background') {
+            console.log(`🎨 Background change command from: ${userId}`);
+            io.emit("background:change", { backgroundIndex: Math.floor(Math.random() * 5) });
+            return;
+          }
+          
+          // Detect quiz answer commands
+          const m = /^\/?\s*([a-d])\b/i.exec(text);
+          const choice = m ? (m[1].toUpperCase()) : undefined;
+          
+          console.log(`🔍 Checking message: "${text}" -> choice: ${choice}`);
+          
+          if (choice) {
+            console.log(`🎯 Quiz answer from ${userId}: ${choice}`);
+            const round = getCurrentRound();
+            const roundId = round ? round.id : null;
+            console.log(`🎮 Current round: ${roundId ? `${roundId} (active)` : 'none'}`);
+            
+            if (roundId && ingestAnswer) {
+              try {
+                await ingestAnswer(roundId, userId, choice);
+                console.log(`✅ Answer recorded: ${userId} -> ${choice}`);
+                
+                // Broadcast answer to frontend for live updates
+                const answerEvent = {
+                  id: `answer_${Date.now()}`,
+                  type: "answer",
+                  text: `@${userId.slice(0, 6)}... answered ${choice}`,
+                  timestamp: Date.now(),
+                  userId: userId,
+                  choice: choice,
+                  status: "accepted",
+                  roundId: roundId
+                };
+                
+                io.emit("feed:event", answerEvent);
+                console.log(`📡 Answer broadcasted to frontend: ${choice}`);
+                
+              } catch (err) {
+                console.log(`❌ Answer recording failed: ${err.message}`);
+              }
+            } else {
+              console.log(`⚠️ Cannot record answer - round: ${roundId ? 'active' : 'none'}, ingestAnswer: ${!!ingestAnswer}`);
+            }
+          }
+        });
+        console.log('✅ Live chat integration started!');
+      }
+    } catch (err) {
+      console.log('⚠️ Live chat integration not available:', err.message);
+    }
+  }, 2000); // 2 saniye bekle
 });
