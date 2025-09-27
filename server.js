@@ -542,7 +542,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'apps/web/dist/index.html'));
 });
 
-server.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🔗 WebSocket server ready for connections`);
 });
