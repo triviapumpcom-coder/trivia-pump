@@ -28,7 +28,7 @@ export function RecentWinners(): JSX.Element {
             </div>
             <div className="space-y-0.5">
               {(h.winners || []).slice(0, 10).map((w, idx) => (
-                <div key={w.id} className="flex items-center justify-between">
+                <div key={`${h.roundId}-winner-${w.id || idx}`} className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
                     <span className="text-xs">
                       {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}.`}

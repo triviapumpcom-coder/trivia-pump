@@ -88,14 +88,14 @@ export function LiveFeed({ events }: LiveFeedProps): JSX.Element {
               </div>
             )}
             
-            {allEvents.map((event) => {
+            {allEvents.map((event, idx) => {
               // Special compact styling for answer events
               if (event.type === "answer" && event.choice) {
                 const isAccepted = event.status === "accepted";
                 const shortWallet = event.userId?.slice(0, 3) + "..." + event.userId?.slice(-3);
                 return (
                   <div 
-                    key={event.id} 
+                    key={`event-answer-${event.id}-${event.userId || idx}`} 
                     className={`flex items-center gap-1.5 px-2 py-1 rounded border flex-shrink-0 ${
                       isAccepted 
                         ? "border-green-400/50 bg-green-400/10 text-green-400" 
@@ -123,7 +123,7 @@ export function LiveFeed({ events }: LiveFeedProps): JSX.Element {
               // Compact styling for other events
               return (
                 <div 
-                  key={event.id} 
+                  key={`event-${event.type}-${event.id}-${event.roundId || idx}`} 
                   className={`flex items-center gap-1.5 px-2 py-1 rounded border border-white/10 flex-shrink-0 ${getEventColor(event.type, event.status)}`}
                   style={{ minWidth: "120px", maxWidth: "160px" }}
                 >

@@ -145,7 +145,7 @@ export function TokenHoldersPanel(): JSX.Element {
           </div>
         )}
         {(holders || []).map((h, idx) => (
-          <div key={h.owner} className="flex items-center justify-between p-2 rounded-lg bg-white/5 border border-white/10">
+          <div key={`holder-${h.owner || idx}-${idx}`} className="flex items-center justify-between p-2 rounded-lg bg-white/5 border border-white/10">
             <div className="flex items-center gap-2 flex-1 min-w-0">
               <span className="text-white/50 text-xs font-mono w-4">{idx + 1}.</span>
               <div className="min-w-0 flex-1">
