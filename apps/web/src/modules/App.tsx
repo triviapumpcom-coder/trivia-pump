@@ -194,7 +194,7 @@ export function App(): JSX.Element {
 
   return (
     <div 
-      className="h-screen overflow-hidden flex flex-col transition-all duration-1000 ease-in-out"
+      className="h-screen lg:overflow-hidden overflow-auto flex flex-col transition-all duration-1000 ease-in-out"
       style={{
         ...(backgrounds[currentBackground].type === 'gradient' 
           ? {
