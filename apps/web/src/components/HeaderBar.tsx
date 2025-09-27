@@ -103,6 +103,8 @@ export function HeaderBar(): JSX.Element {
           <span className="text-yellow-400">{tokenStats.price && tokenStats.price > 0 ? `$${tokenStats.price.toFixed(6)}` : 'Loading...'}</span>
           <span className="text-blue-400">{formatMarketCap(tokenStats.marketCap)} MC</span>
           <span className="text-purple-400">{formatHolders(tokenStats.holders)} holders</span>
+          {/* DEBUG: Show all API values */}
+          <span className="text-red-500 bg-red-500/20 px-1 rounded text-xs">DEBUG: {JSON.stringify(tokenStats)}</span>
           
           {/* Contract Address with Copy */}
           <div className="flex items-center gap-1 bg-black/30 px-1.5 py-0.5 rounded border border-white/20">
