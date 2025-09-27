@@ -31,7 +31,7 @@ export function WinnersTicker(): JSX.Element {
   const last = items[items.length - 1] ?? { id: "placeholder", text: "Waiting for winners…", data: undefined };
   
   const renderContent = () => {
-    if (last.data && last.data.length > 0) {
+    if (last.data && Array.isArray(last.data) && last.data.length > 0) {
       return last.data.slice(0, 10).map((winner, idx) => (
         <span key={`${last.id}-${winner.rank}-${winner.name}-${idx}`} className="mx-4 text-xs">
           <span className="text-white/90">{winner.rank}. 👑 </span>
