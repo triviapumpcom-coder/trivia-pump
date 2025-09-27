@@ -22,7 +22,7 @@ export function WinnersTicker(): JSX.Element {
         const latencyText = typeof latency === "number" ? latency.toFixed(1) : "-.--";
         const rank = idx + 1;
         const name = short(w.name || w.id);
-        return { rank, name, val, latencyText };
+        return { id: w.id, rank, name, val, latencyText };
       });
       const id = `${Date.now()}`;
       setItems((prev) => [...prev, { id, text: "", data: list }].slice(-5));
@@ -33,7 +33,7 @@ export function WinnersTicker(): JSX.Element {
   const renderContent = () => {
     if (last.data && Array.isArray(last.data) && last.data.length > 0) {
       return last.data.slice(0, 10).map((winner, idx) => (
-        <span key={`${last.id}-${winner.rank}-${winner.name}-${idx}`} className="mx-4 text-xs">
+        <span key={`${last.id}-${winner.id}-${winner.rank}`} className="mx-4 text-xs">
           <span className="text-white/90">{winner.rank}. 👑 </span>
           <span className="text-white font-semibold text-xs">{winner.name}</span>
           <span className="text-white/70 text-xs"> (</span>

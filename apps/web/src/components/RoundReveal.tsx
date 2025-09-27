@@ -117,8 +117,8 @@ export function RoundReveal({
           <h3 className="text-lg font-bold text-green-400 mb-2">
             🏆 Winners ({winners.length} players got it right!)
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-            {(winners || []).slice(0, 6).map((winner, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            {(winners || []).slice(0, 3).map((winner, idx) => (
               <div key={winner.id} className="bg-green-500/20 border border-green-400/50 rounded-lg p-2">
                 <div className="flex items-center gap-2">
                   <span className="text-lg">

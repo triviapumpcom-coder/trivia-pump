@@ -169,7 +169,7 @@ export const useGameStore = create<GameStore>((set) => ({
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 userId: winner.id,
-                name: winner.name,
+                name: winner.name || `Player ${winner.id.slice(-4)}`,
                 score: score,
                 roundId: payload.id
               })
