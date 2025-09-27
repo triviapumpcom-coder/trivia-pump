@@ -22,27 +22,27 @@ export function getSocket(apiBase?: string): Socket {
     timeout: 20000,
   });
 
-    // Connection event handlers
-    socket.on('connect', () => {
-      console.log('✅ WebSocket Connected to server!');
-    });
+  // Connection event handlers
+  socket.on('connect', () => {
+    console.log('✅ WebSocket Connected to server!');
+  });
 
-    socket.on('disconnect', (reason) => {
-      console.log('🔌 WebSocket Disconnected:', reason);
-    });
+  socket.on('disconnect', (reason) => {
+    console.log('🔌 WebSocket Disconnected:', reason);
+  });
 
-    socket.on('connect_error', (error) => {
-      console.error('❌ WebSocket Connection Error:', error);
-    });
+  socket.on('connect_error', (error) => {
+    console.error('❌ WebSocket Connection Error:', error);
+  });
 
-    socket.on('reconnect', (attemptNumber) => {
-      console.log('🔄 WebSocket Reconnected after', attemptNumber, 'attempts');
-    });
+  socket.on('reconnect', (attemptNumber) => {
+    console.log('🔄 WebSocket Reconnected after', attemptNumber, 'attempts');
+  });
 
-    socket.on('reconnect_error', (error) => {
-      console.warn('❌ WebSocket Reconnection failed:', error);
-    });
-  }
+  socket.on('reconnect_error', (error) => {
+    console.warn('❌ WebSocket Reconnection failed:', error);
+  });
+  
   return socket;
 }
 
