@@ -1,29 +1,22 @@
 {
   "name": "quizbot-monorepo",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "dev:web": "pnpm -C apps/web dev",
-    "dev:api": "pnpm -C apps/api dev",
-    "dev": "concurrently \"pnpm -C apps/web dev\" \"pnpm -C apps/api dev\"",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && npm run dev",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc -b",
     "build": "echo 'Building frontend...' && cd apps/web && npm install && npm run build && echo 'Frontend build complete!'",
     "start": "node server.js",
     "heroku-postbuild": "echo 'Skipping frontend build - using static files'",
-    "build:web": "pnpm -C apps/web build",
-    "build:api": "pnpm -C apps/api build",
-    "build:npm": "npm install && npm run build:web:npm && npm run build:api:npm",
-    "build:web:npm": "cd apps/web && npm install && npm run build",
-    "build:api:npm": "cd apps/api && npm install && npm run build",
-    "start:api": "pnpm -C apps/api start",
-    "db:generate": "pnpm -C apps/api db:generate",
-    "db:push": "pnpm -C apps/api db:push",
-    "db:migrate": "pnpm -C apps/api db:migrate"
+    "build:web": "cd apps/web && npm run build",
+    "build:api": "cd apps/api && npm run build",
+    "start:api": "cd apps/api && npm start",
+    "db:generate": "cd apps/api && npm run db:generate",
+    "db:push": "cd apps/api && npm run db:push",
+    "db:migrate": "cd apps/api && npm run db:migrate"
   },
   "engines": {
     "node": "18.x"
