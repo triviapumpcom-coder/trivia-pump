@@ -12,7 +12,7 @@ export interface RoundPayload {
 
 export type Broadcast = (event: string, payload: unknown) => void;
 
-import { setCurrentRoundId } from "./current";
+import { setCurrentRoundIdSync } from "./current";
 import { resetRound, tallyCorrect, incrementWeeklyScores } from "./answers";
 import { getRedis } from "../lib/redis";
 
@@ -58,7 +58,7 @@ export function startRoundLoop(broadcast: Broadcast): void {
       category: q?.tags?.[0] ?? "general", // Use first tag as category
       difficulty: q?.difficulty ?? "medium",
     };
-    setCurrentRoundId(payload.id);
+    setCurrentRoundIdSync(payload.id);
     resetRound(payload.id);
     
     // Save round data to Redis for state recovery

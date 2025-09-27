@@ -8,7 +8,7 @@ import { setupWS } from "./ws";
 import { startRoundLoop } from "./game/engine";
 import { tallyCorrect, incrementWeeklyScores, ingestAnswer, debugDumpRound } from "./game/answers";
 import { getRedis } from "./lib/redis";
-import { setCurrentRoundId, getCurrentRoundId, getRoundStartTs } from "./game/current";
+import { setCurrentRoundIdSync, getCurrentRoundIdSync, getRoundStartTsSync } from "./game/current";
 import { startPumpChatIntegration } from "./integrations/pumpChatAdapter";
 import { floodProtection } from "./security/floodProtection";
 import type { Request, Response } from "express";
@@ -30,7 +30,7 @@ app.use("/api", router);
 
 // Debug endpoint to see current round id
 app.get("/api/debug/round", (_req: Request, res: Response) => {
-  res.json({ currentRoundId: getCurrentRoundId() });
+  res.json({ currentRoundId: getCurrentRoundIdSync() });
 });
 app.get("/api/debug/answers", async (_req: Request, res: Response) => {
   const id = getCurrentRoundId();
@@ -142,7 +142,7 @@ server.listen(env.PORT, () => {
       await (redis as any).ltrim("events:recent", 0, 49); // Keep last 50 events
       
       ws.broadcast("feed:event", eventData);
-      setCurrentRoundId(payload.id);
+      setCurrentRoundIdSync(payload.id);
     }
     
     if (event === "round:end") {
@@ -229,7 +229,7 @@ server.listen(env.PORT, () => {
       
       const m = /^\/?\s*([a-d])\b/i.exec(text);
       const choice = m ? (m[1].toUpperCase() as "A" | "B" | "C" | "D") : undefined;
-      const roundId = getCurrentRoundId();
+      const roundId = getCurrentRoundIdSync();
       
       if (!roundId) {
         const eventData = {
@@ -276,7 +276,7 @@ server.listen(env.PORT, () => {
       }
       
       const res = await ingestAnswer(roundId, userId, choice);
-      const roundStart = getRoundStartTs();
+      const roundStart = getRoundStartTsSync();
       const latencyMs = roundStart ? Date.now() - roundStart : null;
       const latencySec = latencyMs ? Number((latencyMs / 1000).toFixed(2)) : null;
       // current cumulative score for tick display
