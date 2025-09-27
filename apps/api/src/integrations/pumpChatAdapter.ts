@@ -21,7 +21,8 @@ export async function startPumpChatIntegration(
 
     pumpSocket.on("connect", () => {
       // eslint-disable-next-line no-console
-      console.log("[pumpChat] connected", pumpSocket.id);
+      console.log(`🔥 [pumpChat] CONNECTED to pump.fun! Socket ID: ${pumpSocket.id}`);
+      console.log(`🎯 [pumpChat] JOINING ROOM: ${contractAddress}`);
       pumpSocket.emit("join", contractAddress);
       pumpSocket.emit("subscribe", { room: contractAddress });
       pumpSocket.emit("joinRoom", { roomId: contractAddress });
