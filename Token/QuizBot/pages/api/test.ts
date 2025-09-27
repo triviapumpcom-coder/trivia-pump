@@ -1,6 +1,6 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -14,7 +14,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     message: '🎉 Vercel API Functions Working!',
     timestamp: new Date().toISOString(),
     env: {
-      CONTRACT_ADDRESS: process.env.VITE_CONTRACT_ADDRESS || 'Not set'
+      CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS || 'Not set',
+      QUICKNODE_RPC: process.env.QUICKNODE_RPC ? 'Set' : 'Not set',
+      NODE_ENV: process.env.NODE_ENV || 'Not set'
     }
   });
 }
