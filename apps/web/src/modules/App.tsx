@@ -308,9 +308,9 @@ export function App(): JSX.Element {
         </div>
 
         {/* Mobile Layout (< 1024px) */}
-        <div className="lg:hidden flex flex-col gap-2 h-full">
-          {/* Mobile Top Bar - Round Info */}
-          <div className="flex-shrink-0">
+        <div className="lg:hidden flex flex-col h-full">
+          {/* Mobile Top Bar - Round Info (Fixed) */}
+          <div className="flex-shrink-0 mb-2">
             <div className="rounded-xl bg-black/30 p-2 border border-white/10">
               <div className="flex items-center justify-between">
                 <div className="text-white/70 text-xs">Round #{round.roundId || "0"}</div>
@@ -339,8 +339,8 @@ export function App(): JSX.Element {
             </div>
           </div>
 
-          {/* Mobile Main Question */}
-          <div className="flex-1 flex items-start justify-center min-h-0">
+          {/* Mobile Main Question (Fixed) */}
+          <div className="flex-shrink-0 mb-2">
             <div className="w-full">
               {phase === 'waiting' ? (
                 <div className="rounded-3xl bg-black/40 p-4 shadow-2xl border border-white/20 text-center w-full">
@@ -373,23 +373,33 @@ export function App(): JSX.Element {
             </div>
           </div>
 
-          {/* Mobile Stats Grid */}
-          <div className="flex-shrink-0 grid grid-cols-2 gap-2" style={{ height: "120px" }}>
-            <div className="min-h-0">
-              <ErrorBoundary>
-                <LeaderboardPanel />
-              </ErrorBoundary>
-            </div>
-            <div className="min-h-0">
-              <ErrorBoundary>
-                <TokenHoldersPanel />
-              </ErrorBoundary>
-            </div>
+          {/* Mobile Live Feed (Fixed) */}
+          <div className="flex-shrink-0 mb-2">
+            <LiveFeed events={events} />
           </div>
 
-          {/* Mobile Live Feed */}
-          <div className="flex-shrink-0">
-            <LiveFeed events={events} />
+          {/* Mobile Scrollable Content Area */}
+          <div className="flex-1 overflow-y-auto min-h-0">
+            <div className="space-y-2 pb-4">
+              {/* Mobile Stats Grid */}
+              <div className="grid grid-cols-2 gap-2">
+                <div className="min-h-0">
+                  <ErrorBoundary>
+                    <LeaderboardPanel />
+                  </ErrorBoundary>
+                </div>
+                <div className="min-h-0">
+                  <ErrorBoundary>
+                    <TokenHoldersPanel />
+                  </ErrorBoundary>
+                </div>
+              </div>
+
+              {/* Recent Winners */}
+              <div className="w-full">
+                <RecentWinners />
+              </div>
+            </div>
           </div>
         </div>
       </div>
