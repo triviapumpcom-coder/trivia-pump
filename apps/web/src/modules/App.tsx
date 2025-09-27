@@ -227,7 +227,7 @@ export function App(): JSX.Element {
           <div className="grid gap-2" style={{ gridTemplateRows: "auto 1fr" }}>
             <div className="rounded-2xl bg-black/30 p-2 border border-white/10">
               <div className="text-center">
-                <div className="text-white/70 text-xs mb-1">Round #{round.roundId || "0"}</div>
+                <div className="text-white/70 text-xs mb-1">Round #{round.roundId || "Starting..."}</div>
                 <Countdown endsAtMs={round.endsAt} durationSec={round.durationSec} isActive={phase === 'question'} enableSounds={isSoundEnabled} />
                 <div className="text-white/60 text-xs mt-1">
                   {round.status === "idle" ? (
@@ -314,7 +314,7 @@ export function App(): JSX.Element {
           <div className="flex-shrink-0 mb-2">
             <div className="rounded-xl bg-black/30 p-2 border border-white/10">
               <div className="flex items-center justify-between">
-                <div className="text-white/70 text-xs">Round #{round.roundId || "0"}</div>
+                <div className="text-white/70 text-xs">Round #{round.roundId || "Starting..."}</div>
                 <div className="flex items-center gap-2">
                   <Countdown endsAtMs={round.endsAt} durationSec={round.durationSec} isActive={phase === 'question'} enableSounds={false} />
                   <div className="text-white/60 text-xs">
