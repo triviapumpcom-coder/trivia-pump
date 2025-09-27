@@ -2,8 +2,8 @@ import React from "react";
 
 export function TokenHoldersPanel(): JSX.Element {
   // Get contract address from environment
-  // Force new contract - clear any cache
-const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+  // Use environment variable with fallback
+  const mint = (import.meta as any).env?.VITE_CONTRACT_ADDRESS || "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
   
   const [holders, setHolders] = React.useState<Array<{ owner: string; amount: number }>>([]);
   const [currentPage, setCurrentPage] = React.useState(0); // 0 for first 5, 1 for second 5

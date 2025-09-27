@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-// 🔥🔥🔥 FORCE NEW CONTRACT - BYPASS ALL CACHE
-const contractAddress = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
-console.log(`🔥🔥🔥 SERVER.JS FORCED CONTRACT ADDRESS: ${contractAddress}`);
+// 🔥 CONTRACT ADDRESS FROM ENV (with fallback)
+const contractAddress = process.env.CONTRACT_ADDRESS || process.env.VITE_CONTRACT_ADDRESS || "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+console.log(`🔥 SERVER.JS CONTRACT ADDRESS: ${contractAddress}`);
 
 // Solana integration (JavaScript version)
 let solanaIntegration = null;
@@ -305,8 +305,8 @@ app.get('/api/winners/recent', (req, res) => {
 });
 
 app.get('/api/token/stats', async (req, res) => {
-  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE QUERY
-  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+  // Use environment contract address
+  const mint = req.query.mint || contractAddress;
   
   if (!mint) {
     return res.status(400).json({ error: 'Missing mint parameter' });
@@ -373,8 +373,8 @@ app.get('/api/token/stats', async (req, res) => {
 });
 
 app.get('/api/token/top-holders', async (req, res) => {
-  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE QUERY  
-  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+  // Use environment contract address
+  const mint = req.query.mint || contractAddress;
   
   if (!mint) {
     return res.status(400).json({ error: 'Missing mint parameter' });
@@ -475,8 +475,8 @@ app.get('/api/token/top-holders', async (req, res) => {
 
 // Alternative routes for compatibility (forward to correct handlers)
 app.get('/api/token/:mint/stats', async (req, res) => {
-  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE PARAMS
-  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+  // Use environment contract address
+  const mint = req.params.mint || contractAddress;
   
   // Current token data
   if (mint === '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump') {
@@ -494,8 +494,8 @@ app.get('/api/token/:mint/stats', async (req, res) => {
 });
 
 app.get('/api/token/:mint/top-holders', (req, res) => {
-  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE PARAMS
-  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+  // Use environment contract address
+  const mint = req.params.mint || contractAddress;
   
   const mockHolders = [
     {
