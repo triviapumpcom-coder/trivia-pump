@@ -5,7 +5,7 @@ let socket: Socket | null = null;
 export function getSocket(apiBase?: string): Socket {
   // Use current domain in production, localhost in development
   const currentDomain = typeof window !== 'undefined' ? window.location.origin : '';
-  const base = apiBase ?? (import.meta as any).env?.VITE_API_BASE ?? currentDomain || "http://127.0.0.1:5001";
+  const base = apiBase ?? (import.meta as any).env?.VITE_API_BASE ?? (currentDomain || "http://127.0.0.1:5001");
   console.log('🔗 WebSocket connecting to:', base);
   if (!socket) {
     socket = io(base, { 
