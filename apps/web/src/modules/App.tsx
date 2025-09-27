@@ -99,7 +99,7 @@ export function App(): JSX.Element {
             roundGroups[event.roundId].events.push(event);
           });
           
-          const roundGroupsArray = Object.values(roundGroups).slice(-5);
+          const roundGroupsArray = (Object.values(roundGroups) || []).slice(-5);
           useGameStore.setState(state => ({
             ...state,
             roundGroups: roundGroupsArray as any
@@ -107,11 +107,11 @@ export function App(): JSX.Element {
         }
         
         // Restore winners history
-        if (winnersData.winners && winnersData.winners.length > 0) {
+        if (winnersData.winners && Array.isArray(winnersData.winners) && winnersData.winners.length > 0) {
           console.log('🔄 Restoring winners:', winnersData.winners.length);
           useGameStore.setState(state => ({
             ...state,
-            winnersHistory: winnersData.winners.slice(-10)
+            winnersHistory: (winnersData.winners || []).slice(-10)
           }));
         }
       }).catch(err => console.warn('Failed to restore game state:', err));

@@ -132,13 +132,13 @@ export function TokenHoldersPanel(): JSX.Element {
         <span className="text-xs text-blue-400 bg-blue-400/20 px-2 py-1 rounded-full">Live</span>
       </div>
       <div ref={scrollRef} className={`overflow-y-auto scrollbar-hide space-y-1 transition-opacity duration-300 ${isTransitioning ? 'opacity-30' : 'opacity-100'}`} style={{ height: "300px" }}>
-        {holders.length === 0 && (
+        {(!holders || holders.length === 0) && (
           <div className="text-center py-4 text-white/60">
             <div className="text-xl mb-1">📊</div>
             <div className="text-xs">Loading holders...</div>
           </div>
         )}
-        {holders.map((h, idx) => (
+        {(holders || []).map((h, idx) => (
           <div key={h.owner} className="flex items-center justify-between p-2 rounded-lg bg-white/5 border border-white/10">
             <div className="flex items-center gap-2 flex-1 min-w-0">
               <span className="text-white/50 text-xs font-mono w-4">{idx + 1}.</span>
