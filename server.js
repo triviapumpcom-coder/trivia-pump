@@ -211,6 +211,9 @@ try {
 }
 
 // 🎮 START QUIZ ENGINE WITH 250 QUESTIONS (CommonJS compatible)
+let currentRound = null;
+let ws = null;
+
 try {
   const { startRoundLoop } = require('./apps/api/dist/game/engine.js');
   const { setupWS } = require('./apps/api/dist/ws/index.js');
@@ -219,11 +222,21 @@ try {
     console.log('🎮 Starting quiz engine with 250 questions...');
     
     // Setup WebSocket broadcast
-    const ws = setupWS(io);
+    ws = setupWS(io);
     
     // Start the round loop
     startRoundLoop((event, payload) => {
       console.log(`📡 Broadcasting: ${event}`);
+      
+      // Track current round state
+      if (event === 'round:start') {
+        currentRound = payload;
+        console.log(`🎮 Round started: ${payload.id}`);
+      } else if (event === 'round:end') {
+        currentRound = null;
+        console.log(`🎮 Round ended: ${payload.id}`);
+      }
+      
       ws.broadcast(event, payload);
     });
     
@@ -231,6 +244,11 @@ try {
   }
 } catch (err) {
   console.log('⚠️ Quiz engine not available:', err.message);
+}
+
+// Helper function to get current round
+function getCurrentRound() {
+  return currentRound;
 }
 
 // 🔥 START LIVE CHAT INTEGRATION (CommonJS compatible)
@@ -267,8 +285,9 @@ try {
       
       if (choice) {
         console.log(`🎯 Quiz answer from ${userId}: ${choice}`);
-        const roundId = getCurrentRoundIdSync();
-        console.log(`🎮 Current round ID: ${roundId}`);
+        const round = getCurrentRound();
+        const roundId = round ? round.id : null;
+        console.log(`🎮 Current round: ${roundId ? `${roundId} (active)` : 'none'}`);
         
         if (roundId && ingestAnswer) {
           try {
@@ -278,7 +297,7 @@ try {
             console.log(`❌ Answer recording failed: ${err.message}`);
           }
         } else {
-          console.log(`⚠️ Cannot record answer - roundId: ${roundId}, ingestAnswer: ${!!ingestAnswer}`);
+          console.log(`⚠️ Cannot record answer - round: ${roundId ? 'active' : 'none'}, ingestAnswer: ${!!ingestAnswer}`);
         }
       }
     });
