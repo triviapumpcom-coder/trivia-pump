@@ -20,6 +20,7 @@ root.render(
 );
 
 
-// 🔥 COMPLETE CONTRACT CHANGE: 42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump ONLY
+// 🔥 WEBSOCKET FIX: Production server connection
+// API_BASE: https://www.triviapump.com
+// Contract: 42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
 // Build: $(date)
-// NO OLD CONTRACT ALLOWED!
