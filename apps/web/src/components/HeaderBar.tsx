@@ -60,6 +60,7 @@ export function HeaderBar(): JSX.Element {
   };
 
   const formatHolders = (count: number) => {
+    if (!count || count === 0) return '0';
     if (count >= 1000) {
       return `${(count / 1000).toFixed(1)}K`;
     }
