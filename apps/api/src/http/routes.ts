@@ -24,14 +24,10 @@ router.get("/leaderboard/weekly", async (req, res) => {
     const limit = Number(req.query.limit ?? 50);
     const redis = getRedis();
     
-    // Add some test data if empty
-    const exists = await (redis as any).exists("scores:weekly");
-    if (!exists) {
-      await (redis as any).zadd("scores:weekly", 150, "user1");
-      await (redis as any).zadd("scores:weekly", 120, "user2");
-      await (redis as any).zadd("scores:weekly", 95, "user3");
-      await (redis as any).zadd("scores:weekly", 80, "user4");
-      await (redis as any).zadd("scores:weekly", 65, "user5");
+    // Clean up any existing mock data (one-time cleanup)
+    const mockUsers = ["user1", "user2", "user3", "user4", "user5"];
+    for (const user of mockUsers) {
+      await (redis as any).zrem("scores:weekly", user);
     }
     
     const flat = await (redis as any).zrevrange("scores:weekly", 0, limit - 1, "WITHSCORES");
