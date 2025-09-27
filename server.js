@@ -251,6 +251,40 @@ function getCurrentRound() {
   return currentRound;
 }
 
+// Override /api/game/current to use server.js round state
+app.get('/api/game/current', (req, res) => {
+  const round = getCurrentRound();
+  
+  if (round) {
+    const now = Date.now();
+    const timeLeft = Math.max(0, round.endsAt - now);
+    
+    const gameState = {
+      round: {
+        roundId: round.id,
+        question: round.question,
+        options: round.options,
+        endsAt: round.endsAt,
+        durationSec: round.durationSec,
+        category: round.category,
+        difficulty: round.difficulty,
+        status: timeLeft > 0 ? "running" : "ended",
+        media: round.media || []
+      },
+      optionStats: { A: 15, B: 25, C: 8, D: 4 }, // Mock stats for now
+      totalAnswers: 52,
+      timeLeft: timeLeft,
+      phase: timeLeft > 0 ? "question" : "ended"
+    };
+    
+    console.log(`🎮 API: Serving active round ${round.id}, timeLeft: ${timeLeft}ms`);
+    return res.json(gameState);
+  }
+  
+  console.log(`🎮 API: No active round`);
+  res.json({ round: null, events: [], winners: [] });
+});
+
 // 🔥 START LIVE CHAT INTEGRATION (CommonJS compatible)
 try {
   const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
