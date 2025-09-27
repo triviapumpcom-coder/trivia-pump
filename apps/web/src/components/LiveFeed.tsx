@@ -60,6 +60,12 @@ export function LiveFeed({ events }: LiveFeedProps): JSX.Element {
   const allEvents = roundGroups
     .flatMap(round => round.events)
     .filter((event, index, arr) => {
+      // Remove duplicate events by id
+      const firstIndex = arr.findIndex(e => e.id === event.id);
+      if (firstIndex !== index) {
+        return false;
+      }
+      
       // Remove duplicate round_end events
       if (event.type === "round_end") {
         return arr.findIndex(e => e.type === "round_end" && e.roundId === event.roundId) === index;
@@ -95,7 +101,7 @@ export function LiveFeed({ events }: LiveFeedProps): JSX.Element {
                 const shortWallet = event.userId?.slice(0, 3) + "..." + event.userId?.slice(-3);
                 return (
                   <div 
-                    key={`event-answer-${event.id}-${event.userId || idx}`} 
+                    key={`event-answer-${event.id}-${event.timestamp}-${idx}`} 
                     className={`flex items-center gap-1.5 px-2 py-1 rounded border flex-shrink-0 ${
                       isAccepted 
                         ? "border-green-400/50 bg-green-400/10 text-green-400" 
@@ -123,7 +129,7 @@ export function LiveFeed({ events }: LiveFeedProps): JSX.Element {
               // Compact styling for other events
               return (
                 <div 
-                  key={`event-${event.type}-${event.id}-${event.roundId || idx}`} 
+                  key={`event-${event.type}-${event.id}-${event.timestamp}-${idx}`} 
                   className={`flex items-center gap-1.5 px-2 py-1 rounded border border-white/10 flex-shrink-0 ${getEventColor(event.type, event.status)}`}
                   style={{ minWidth: "120px", maxWidth: "160px" }}
                 >
