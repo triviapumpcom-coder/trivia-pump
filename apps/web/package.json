@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && rm -rf node_modules/.vite && vite build --force",
+    "build": "rm -rf dist && rm -rf node_modules/.vite && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
