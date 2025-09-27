@@ -198,11 +198,16 @@ export const useGameStore = create<GameStore>((set) => ({
             ? (() => {
                 const newWinnersEntry = {
                   roundId: payload.id,
-                  winners: payload.winners.map((w) => ({
-                    ...w,
-                    score: s.scores[w.id] ?? 0,
-                    latencySec: s.latencies[w.id] ?? null,
-                  })),
+                  winners: payload.winners.map((w, idx) => {
+                    // Handle both string and object formats
+                    const userId = typeof w === 'string' ? w : w.id;
+                    return {
+                      id: userId,
+                      rank: idx + 1,
+                      score: s.scores[userId] ?? 0,
+                      latencySec: s.latencies[userId] ?? null,
+                    };
+                  }),
                 };
                 console.log("🔍 GAME STORE: Adding to winnersHistory:", JSON.stringify(newWinnersEntry, null, 2));
                 return [...s.winnersHistory, newWinnersEntry].slice(-10);

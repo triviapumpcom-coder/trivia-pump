@@ -21,12 +21,14 @@ export function WinnersTicker(): JSX.Element {
     
     if (round.status === "ended" && round.winners?.length) {
       const list = round.winners.map((w, idx) => {
-        const val = scores[w.id] ?? 0;
-        const latency = latencies[w.id];
+        // Handle both string and object formats
+        const userId = typeof w === 'string' ? w : w.id;
+        const val = scores[userId] ?? 0;
+        const latency = latencies[userId];
         const latencyText = typeof latency === "number" ? latency.toFixed(1) : "-.--";
         const rank = idx + 1;
-        const name = w.id && w.id.length > 8 ? `${w.id.slice(0, 4)}...${w.id.slice(-4)}` : (w.id || 'Player');
-        return { id: w.id, rank, name, val, latencyText };
+        const name = userId && userId.length > 8 ? `${userId.slice(0, 4)}...${userId.slice(-4)}` : (userId || 'Player');
+        return { id: userId, rank, name, val, latencyText };
       });
       const id = `${Date.now()}`;
       setItems((prev) => [...prev, { id, text: "", data: list }].slice(-5));
