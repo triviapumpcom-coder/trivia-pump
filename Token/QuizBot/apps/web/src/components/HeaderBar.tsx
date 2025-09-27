@@ -12,8 +12,6 @@ interface TokenStats {
 
 export function HeaderBar(): JSX.Element {
   const contract = (import.meta as any).env?.VITE_CONTRACT_ADDRESS as string | undefined;
-  console.log('🔧 HeaderBar: Contract from env:', contract);
-  console.log('🔧 HeaderBar: All env vars:', (import.meta as any).env);
   
   const [tokenStats, setTokenStats] = useState<TokenStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -22,36 +20,26 @@ export function HeaderBar(): JSX.Element {
 
   // Fetch token stats
   useEffect(() => {
-    console.log('🔍 HeaderBar: useEffect triggered with contract:', contract);
     
     const fetchTokenStats = async () => {
-      console.log('📡 HeaderBar: fetchTokenStats called with contract:', contract);
-      
       if (!contract || contract === 'demo') {
-        console.log('❌ HeaderBar: No contract or demo contract, skipping fetch');
         setLoading(false);
         return;
       }
 
       setLoading(true);
-      console.log('📡 HeaderBar: Fetching from:', `/api/token/${contract}/stats`);
 
       try {
-        const response = await fetch(`/api/token/${contract}/stats`);
-        console.log('📡 HeaderBar: Response status:', response.status);
+        const response = await fetch(`/api/token/stats?mint=${contract}`);
         
         if (response.ok) {
           const stats = await response.json();
-          console.log('✅ HeaderBar: Token stats received:', stats);
           setTokenStats(stats);
-        } else {
-          console.error('❌ HeaderBar: Response not ok:', response.status, response.statusText);
         }
       } catch (error) {
-        console.error('❌ HeaderBar: Fetch error:', error);
+        // Silent error handling
       } finally {
         setLoading(false);
-        console.log('🏁 HeaderBar: fetchTokenStats completed');
       }
     };
 

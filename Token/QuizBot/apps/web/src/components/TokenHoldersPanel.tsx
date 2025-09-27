@@ -3,8 +3,6 @@ import React from "react";
 export function TokenHoldersPanel(): JSX.Element {
   // Get contract address from environment
   const mint = (import.meta as any).env?.VITE_CONTRACT_ADDRESS || "demo";
-  console.log('🔧 TokenHolders: Mint from env:', mint);
-  console.log('🔧 TokenHolders: All env vars:', (import.meta as any).env);
   
   const [holders, setHolders] = React.useState<Array<{ owner: string; amount: number }>>([]);
   const [currentPage, setCurrentPage] = React.useState(0); // 0 for first 5, 1 for second 5
@@ -78,7 +76,7 @@ export function TokenHoldersPanel(): JSX.Element {
     // Real API call first (fallback to mock data on error)
     if (mint !== "demo") {
       try {
-        const response = await fetch(`/api/token/${mint}/top-holders`);
+        const response = await fetch(`/api/token/top-holders?mint=${mint}`);
         if (response.ok) {
           const data = await response.json();
           console.log('👑 Holders API response:', data);

@@ -2,19 +2,15 @@
   "buildCommand": "cd apps/web && npm install && npm run build",
   "outputDirectory": "apps/web/dist",
   "installCommand": "npm install",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "env": {
-    "CONTRACT_ADDRESS": "5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump",
-    "QUICKNODE_RPC": "https://frosty-smart-mound.solana-mainnet.quiknode.pro/75dae04b7b364ea7f313486132f3f1c4ae170db0/",
-    "VITE_CONTRACT_ADDRESS": "5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump",
-    "VITE_API_BASE": "https://trivia-pump.vercel.app",
-    "NODE_ENV": "production",
-    "ROUND_DURATION_SEC": "30",
-    "CORS_ORIGIN": "*"
-  }
+  ]
 }
