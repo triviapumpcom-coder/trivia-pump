@@ -233,6 +233,51 @@ try {
   console.log('⚠️ Quiz engine not available:', err.message);
 }
 
+// 🔥 START LIVE CHAT INTEGRATION (CommonJS compatible)
+try {
+  const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
+  const { getRedis } = require('./apps/api/dist/lib/redis.js');
+  const { floodProtection } = require('./apps/api/dist/security/floodProtection.js');
+  const { ingestAnswer } = require('./apps/api/dist/game/answers.js');
+  const { getCurrentRoundIdSync } = require('./apps/api/dist/game/current.js');
+  
+  console.log(`🔥 LIVE CHAT CONTRACT ADDRESS: ${contractAddress}`);
+  if (contractAddress && startPumpChatIntegration) {
+    console.log(`🚀 Starting pump.fun integration for: ${contractAddress}`);
+    startPumpChatIntegration(contractAddress, async (msg) => {
+      // normalize message -> detect choice
+      const raw = (msg.message || "");
+      const text = raw.trim();
+      const userId = msg.account || msg.displayName || "unknown";
+      
+      console.log(`💬 Live chat message: ${userId}: ${text}`);
+      
+      // Check for background change command
+      if (text.toLowerCase() === '/background') {
+        console.log(`🎨 Background change command from: ${userId}`);
+        io.emit("background:change", { backgroundIndex: Math.floor(Math.random() * 5) });
+        return;
+      }
+      
+      // Detect quiz answer commands
+      const m = /^\/?\s*([a-d])\b/i.exec(text);
+      const choice = m ? (m[1].toUpperCase()) : undefined;
+      
+      if (choice) {
+        console.log(`🎯 Quiz answer from ${userId}: ${choice}`);
+        const roundId = getCurrentRoundIdSync();
+        if (roundId && ingestAnswer) {
+          await ingestAnswer(roundId, userId, choice);
+          console.log(`✅ Answer recorded: ${userId} -> ${choice}`);
+        }
+      }
+    });
+    console.log('✅ Live chat integration started!');
+  }
+} catch (err) {
+  console.log('⚠️ Live chat integration not available:', err.message);
+}
+
 // API Routes
 app.get('/api/test', (req, res) => {
   res.json({
