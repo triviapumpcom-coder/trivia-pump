@@ -305,7 +305,8 @@ app.get('/api/winners/recent', (req, res) => {
 });
 
 app.get('/api/token/stats', async (req, res) => {
-  const { mint } = req.query;
+  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE QUERY
+  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
   
   if (!mint) {
     return res.status(400).json({ error: 'Missing mint parameter' });
@@ -372,7 +373,8 @@ app.get('/api/token/stats', async (req, res) => {
 });
 
 app.get('/api/token/top-holders', async (req, res) => {
-  const { mint } = req.query;
+  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE QUERY  
+  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
   
   if (!mint) {
     return res.status(400).json({ error: 'Missing mint parameter' });
@@ -473,7 +475,8 @@ app.get('/api/token/top-holders', async (req, res) => {
 
 // Alternative routes for compatibility (forward to correct handlers)
 app.get('/api/token/:mint/stats', async (req, res) => {
-  const { mint } = req.params;
+  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE PARAMS
+  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
   
   // Current token data
   if (mint === '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump') {
@@ -491,7 +494,8 @@ app.get('/api/token/:mint/stats', async (req, res) => {
 });
 
 app.get('/api/token/:mint/top-holders', (req, res) => {
-  const { mint } = req.params;
+  // 🔥 FORCE NEW CONTRACT ONLY - IGNORE PARAMS
+  const mint = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
   
   const mockHolders = [
     {
