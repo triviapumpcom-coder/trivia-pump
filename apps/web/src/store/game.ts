@@ -214,6 +214,7 @@ export const useGameStore = create<GameStore>((set) => ({
   resetEvents: () => set({ events: [] }),
   applyAnswer: ({ roundId, userId, choice, status, total, latencySec }) =>
     set((s) => {
+      console.log("🔍 GAME STORE: applyAnswer called with:", { roundId, userId, choice, status, total, latencySec });
       const now = Date.now();
       const shortUserId = userId.length > 8 ? `${userId.slice(0, 4)}...${userId.slice(-4)}` : userId;
       
