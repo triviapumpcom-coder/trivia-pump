@@ -614,6 +614,7 @@ try {
       
       const text = (msg.message || "").trim();
       const userId = msg.account || msg.displayName || msg.username || "unknown";
+      const userName = msg.username || msg.displayName || (userId.length > 8 ? `${userId.slice(0, 4)}...${userId.slice(-4)}` : userId);
       
       // Background command
       if (text.toLowerCase() === '/background') {
@@ -635,7 +636,7 @@ try {
           const answerData = {
             id: `answer_${Date.now()}`,
             type: "answer",
-            text: `@${userId.slice(0, 6)}... answered ${choice}`,
+            text: `@${userName} answered ${choice}`,
             timestamp: Date.now(),
             userId: userId,
             choice: choice,
@@ -648,7 +649,8 @@ try {
             roundId: round.id,
             userId: userId,
             choice: choice,
-            status: "accepted"
+            status: "accepted",
+            userName: userName
           });
           
           console.log(`📡 BROADCAST: ${choice} (both feed:event and answer:accepted)`);
