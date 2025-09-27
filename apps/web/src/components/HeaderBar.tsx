@@ -106,7 +106,12 @@ export function HeaderBar(): JSX.Element {
           {/* Contract Address with Copy */}
           <div className="flex items-center gap-1 bg-black/30 px-1.5 py-0.5 rounded border border-white/20">
             <span className="text-white/90 font-mono text-xs">
-              {contract && contract !== 'demo' ? contract : 'Demo'}
+              {contract && contract !== 'demo' ? (
+                <>
+                  <span className="hidden sm:inline">{contract}</span>
+                  <span className="sm:hidden">{short(contract)}</span>
+                </>
+              ) : 'Demo'}
             </span>
             <button
               onClick={() => {
