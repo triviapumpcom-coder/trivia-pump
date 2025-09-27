@@ -603,45 +603,54 @@ app.get('*', (req, res) => {
 
 // 🔥 SIMPLE LIVE CHAT INTEGRATION
 console.log('🔍 Loading live chat integration...');
-const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
-const { ingestAnswer } = require('./apps/api/dist/game/answers.js');
+try {
+  const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
+  const { ingestAnswer } = require('./apps/api/dist/game/answers.js');
 
-console.log(`🔥 LIVE CHAT CONTRACT: ${contractAddress}`);
-startPumpChatIntegration(contractAddress, async (msg) => {
-  console.log(`💬 LIVE CHAT MESSAGE:`, JSON.stringify(msg));
-  
-  const text = (msg.message || "").trim();
-  const userId = msg.account || msg.displayName || msg.username || "unknown";
-  
-  // Background command
-  if (text.toLowerCase() === '/background') {
-    io.emit("background:change", { backgroundIndex: Math.floor(Math.random() * 5) });
-    return;
-  }
-  
-  // Quiz answer commands
-  const m = /^\/?\s*([a-d])\b/i.exec(text);
-  const choice = m ? m[1].toUpperCase() : undefined;
-  
-  if (choice) {
-    console.log(`🎯 ANSWER: ${userId} -> ${choice}`);
-    const round = getCurrentRound();
-    if (round && ingestAnswer) {
-      await ingestAnswer(round.id, userId, choice);
-      io.emit("feed:event", {
-        id: `answer_${Date.now()}`,
-        type: "answer",
-        text: `@${userId.slice(0, 6)}... answered ${choice}`,
-        timestamp: Date.now(),
-        userId: userId,
-        choice: choice,
-        status: "accepted",
-        roundId: round.id
-      });
-      console.log(`📡 BROADCAST: ${choice}`);
+  console.log(`🔥 LIVE CHAT CONTRACT: ${contractAddress}`);
+  startPumpChatIntegration(contractAddress, async (msg) => {
+    try {
+      console.log(`💬 LIVE CHAT MESSAGE:`, JSON.stringify(msg));
+      
+      const text = (msg.message || "").trim();
+      const userId = msg.account || msg.displayName || msg.username || "unknown";
+      
+      // Background command
+      if (text.toLowerCase() === '/background') {
+        io.emit("background:change", { backgroundIndex: Math.floor(Math.random() * 5) });
+        return;
+      }
+      
+      // Quiz answer commands
+      const m = /^\/?\s*([a-d])\b/i.exec(text);
+      const choice = m ? m[1].toUpperCase() : undefined;
+      
+      if (choice) {
+        console.log(`🎯 ANSWER: ${userId} -> ${choice}`);
+        const round = getCurrentRound();
+        if (round && ingestAnswer) {
+          await ingestAnswer(round.id, userId, choice);
+          io.emit("feed:event", {
+            id: `answer_${Date.now()}`,
+            type: "answer",
+            text: `@${userId.slice(0, 6)}... answered ${choice}`,
+            timestamp: Date.now(),
+            userId: userId,
+            choice: choice,
+            status: "accepted",
+            roundId: round.id
+          });
+          console.log(`📡 BROADCAST: ${choice}`);
+        }
+      }
+    } catch (err) {
+      console.log(`❌ Live chat message processing error: ${err.message}`);
     }
-  }
-});
+  });
+  console.log('✅ Live chat integration started!');
+} catch (err) {
+  console.log('⚠️ Live chat integration failed:', err.message);
+}
 
 httpServer.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
