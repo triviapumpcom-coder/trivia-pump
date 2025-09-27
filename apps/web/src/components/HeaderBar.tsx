@@ -52,6 +52,7 @@ export function HeaderBar(): JSX.Element {
   }, [contract]);
 
   const formatMarketCap = (value: number) => {
+    if (!value || value === 0) return 'Loading...';
     if (value >= 1000000) {
       return `$${(value / 1000000).toFixed(1)}M`;
     } else if (value >= 1000) {
@@ -61,7 +62,7 @@ export function HeaderBar(): JSX.Element {
   };
 
   const formatHolders = (count: number) => {
-    if (!count || count === 0) return '0';
+    if (!count || count === 0) return 'Loading...';
     if (count >= 1000) {
       return `${(count / 1000).toFixed(1)}K`;
     }
@@ -99,7 +100,7 @@ export function HeaderBar(): JSX.Element {
       {tokenStats && !loading && (
         <div className="flex items-center justify-center gap-2 text-xs text-gray-400 bg-black/20 rounded-lg p-1">
           <span className="text-green-400 font-semibold">{tokenStats.symbol}</span>
-          <span className="text-yellow-400">${tokenStats.price.toFixed(6)}</span>
+          <span className="text-yellow-400">{tokenStats.price && tokenStats.price > 0 ? `$${tokenStats.price.toFixed(6)}` : 'Loading...'}</span>
           <span className="text-blue-400">{formatMarketCap(tokenStats.marketCap)} MC</span>
           <span className="text-purple-400">{formatHolders(tokenStats.holders)} holders</span>
           
