@@ -7,17 +7,30 @@ export type LiveChatMessage = {
 
 type StartArgs = { contractAddress: string; onMessage: (msg: LiveChatMessage) => void };
 
+// Global socket to manage disconnection
+let globalPumpSocket: any = null;
+
 export async function startPumpChatIntegration(
   contractAddress: string,
   onMessage: (msg: LiveChatMessage) => void
 ): Promise<void> {
   try {
+    // Disconnect any existing connection first
+    if (globalPumpSocket) {
+      console.log(`🔌 [pumpChat] DISCONNECTING old socket`);
+      globalPumpSocket.disconnect();
+      globalPumpSocket = null;
+    }
+
     const { io } = await import("socket.io-client");
     const pumpSocket = io("https://livechat.pump.fun", {
       transports: ["websocket"],
       path: "/socket.io",
       reconnection: true,
+      forceNew: true, // Force new connection
     });
+    
+    globalPumpSocket = pumpSocket;
 
     pumpSocket.on("connect", () => {
       // eslint-disable-next-line no-console
