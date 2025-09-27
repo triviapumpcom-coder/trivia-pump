@@ -72,7 +72,7 @@ export function RoundReveal({
             
             return (
               <div 
-                key={idx}
+                key={`option-${letter}-${idx}`}
                 className={`p-3 rounded-lg border-2 transition-all duration-500 ${
                   isCorrect 
                     ? 'bg-green-500/30 border-green-400 shadow-lg shadow-green-400/30' 

@@ -92,7 +92,7 @@ export function QuestionCard({ question, options, media, category, difficulty }:
           
           return (
             <div 
-              key={idx} 
+              key={`question-option-${letter}-${idx}`} 
               className="relative rounded-2xl bg-white/10 border-2 border-white/20 overflow-hidden transition-all duration-100"
               style={{
                 boxShadow: flashIntensity > 0 
