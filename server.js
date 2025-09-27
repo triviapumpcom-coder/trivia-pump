@@ -295,12 +295,18 @@ function getCurrentRound() {
 // API override moved above TypeScript routes
 
 // 🔥 START LIVE CHAT INTEGRATION (CommonJS compatible)
+console.log('🔍 Attempting to load live chat integration...');
 try {
+  console.log('🔍 Loading pumpChatAdapter...');
   const { startPumpChatIntegration } = require('./apps/api/dist/integrations/pumpChatAdapter.js');
+  console.log('✅ pumpChatAdapter loaded');
+  
+  console.log('🔍 Loading other modules...');
   const { getRedis } = require('./apps/api/dist/lib/redis.js');
   const { floodProtection } = require('./apps/api/dist/security/floodProtection.js');
   const { ingestAnswer } = require('./apps/api/dist/game/answers.js');
   const { getCurrentRoundIdSync } = require('./apps/api/dist/game/current.js');
+  console.log('✅ All modules loaded');
   
   console.log(`🔥 LIVE CHAT CONTRACT ADDRESS: ${contractAddress}`);
   if (contractAddress && startPumpChatIntegration) {
