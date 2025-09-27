@@ -8,10 +8,6 @@ export function BackgroundQueue(): JSX.Element {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
-      {/* DEBUG: Show background info */}
-      <div className="fixed top-0 left-0 bg-red-500 text-white p-1 text-xs z-50 pointer-events-none">
-        BG: {currentBackground} | Q: {queue.length}
-      </div>
       {/* Background Image */}
       {currentBackground && (
         <div 
