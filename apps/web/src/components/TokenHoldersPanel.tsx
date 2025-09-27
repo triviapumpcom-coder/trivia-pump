@@ -2,7 +2,7 @@ import React from "react";
 
 export function TokenHoldersPanel(): JSX.Element {
   // Get contract address from environment
-  const mint = (import.meta as any).env?.VITE_CONTRACT_ADDRESS || "demo";
+  const mint = (import.meta as any).env?.VITE_CONTRACT_ADDRESS || "5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump";
   
   const [holders, setHolders] = React.useState<Array<{ owner: string; amount: number }>>([]);
   const [currentPage, setCurrentPage] = React.useState(0); // 0 for first 5, 1 for second 5
