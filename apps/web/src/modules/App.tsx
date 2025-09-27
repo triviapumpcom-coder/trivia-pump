@@ -109,13 +109,12 @@ export function App(): JSX.Element {
         
         // Restore winners history
         if (winnersData.winners && Array.isArray(winnersData.winners) && winnersData.winners.length > 0) {
-          console.log('🔄 Restoring winners:', winnersData.winners.length);
           useGameStore.setState(state => ({
             ...state,
             winnersHistory: (winnersData.winners || []).slice(-10)
           }));
         }
-      }).catch(err => console.warn('Failed to restore game state:', err));
+      }).catch(err => {/* Silent error handling */});
     };
     
     socket.on("connect", handleConnection);

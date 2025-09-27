@@ -60,7 +60,7 @@ export function LeaderboardPanel(): JSX.Element {
             <div className="text-xs">No players yet</div>
           </div>
         )}
-        {(items || []).slice(0, 4).map((it, idx) => (
+        {(items || []).slice(0, 10).map((it, idx) => (
           <div key={it.userId} className={`flex items-center justify-between p-1.5 rounded-lg bg-white/5 border border-white/10 ${getRankColor(idx)}`}>
             <div className="flex items-center gap-1.5 flex-1 min-w-0">
               <span className="text-xs flex-shrink-0">{getRankIcon(idx)}</span>

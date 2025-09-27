@@ -175,7 +175,7 @@ export const useGameStore = create<GameStore>((set) => ({
               })
             });
           } catch (error) {
-            console.warn('Failed to update leaderboard:', error);
+            // Silent error handling
           }
         });
       }

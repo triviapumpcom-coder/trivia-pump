@@ -111,7 +111,6 @@ export function HeaderBar(): JSX.Element {
                 if (contract && contract !== 'demo') {
                   navigator.clipboard.writeText(contract);
                   // Simple feedback - you could add a toast here
-                  console.log('Contract address copied!');
                 }
               }}
               className="text-white/60 hover:text-white/90 transition-colors"

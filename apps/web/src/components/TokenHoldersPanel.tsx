@@ -71,7 +71,6 @@ export function TokenHoldersPanel(): JSX.Element {
 
 
   const load = React.useCallback(async () => {
-    console.log('🔍 Loading holders for:', mint);
     
     try {
       // Real API call first (fallback to mock data on error)
@@ -79,7 +78,6 @@ export function TokenHoldersPanel(): JSX.Element {
         const response = await fetch(`/api/token/top-holders?mint=${mint}`);
         if (response.ok) {
           const data = await response.json();
-          console.log('👑 Holders API response:', data);
           
           if (data && data.holders && Array.isArray(data.holders) && data.holders.length > 0) {
             // Format the real data to match our interface
@@ -91,7 +89,6 @@ export function TokenHoldersPanel(): JSX.Element {
               }));
             
             if (formattedHolders.length > 0) {
-              console.log('✅ Using real holders data:', formattedHolders.length, 'holders');
               setHolders(formattedHolders);
               return;
             }
@@ -99,11 +96,10 @@ export function TokenHoldersPanel(): JSX.Element {
         }
       }
     } catch (error) {
-      console.error('❌ Failed to fetch real holders:', error);
+      // Silent error handling
     }
     
     // Fallback to mock data
-    console.log('⚠️ Using mock holders data');
     if (Array.isArray(mockHolders) && mockHolders.length > 0) {
       setHolders(mockHolders);
     } else {

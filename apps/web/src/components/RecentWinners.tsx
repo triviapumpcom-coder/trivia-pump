@@ -27,11 +27,11 @@ export function RecentWinners(): JSX.Element {
               <span className="text-green-400 text-xs">✓</span>
             </div>
             <div className="space-y-0.5">
-              {(h.winners || []).slice(0, 2).map((w, idx) => (
+              {(h.winners || []).slice(0, 10).map((w, idx) => (
                 <div key={w.id} className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
                     <span className="text-xs">
-                      {idx === 0 ? "🥇" : "🥈"}
+                      {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}.`}
                     </span>
                     <span className="text-white/90 text-xs font-mono">
                       {short(w.name || w.id)}
