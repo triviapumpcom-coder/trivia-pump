@@ -320,12 +320,12 @@ app.get('/api/token/stats', async (req, res) => {
     }
     
     // Fallback to mock data for MESA token
-    if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
-      console.log('⚠️ Using fallback MESA token data');
+    if (mint === '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump') {
+      console.log('⚠️ Using fallback token data');
       const tokenStats = {
-        mint: '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump',
-        name: 'Black Mesa Research Facility',
-        symbol: 'MESA',
+        mint: '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump',
+        name: 'New Token',
+        symbol: 'NEW',
         supply: 999993815.426257,
         holders: 2438,
         marketCap: 297855,
@@ -337,12 +337,12 @@ app.get('/api/token/stats', async (req, res) => {
   } catch (error) {
     console.error('❌ Error fetching token stats:', error);
     
-    // Fallback for any error
-    if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
-      const tokenStats = {
-        mint: '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump',
-        name: 'Black Mesa Research Facility',
-        symbol: 'MESA',
+        // Fallback for any error
+        if (mint === '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump') {
+          const tokenStats = {
+            mint: '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump',
+            name: 'New Token',
+            symbol: 'NEW',
         supply: 999993815.426257,
         holders: 2438,
         marketCap: 297855,
@@ -471,11 +471,11 @@ app.get('/api/token/top-holders', async (req, res) => {
 app.get('/api/token/:mint/stats', async (req, res) => {
   const { mint } = req.params;
   
-  // MESA token data
-  if (mint === '5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump') {
+  // Current token data
+  if (mint === '42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump') {
     const tokenStats = {
-      name: "MESA",
-      symbol: "MESA", 
+      name: "NEW",
+      symbol: "NEW", 
       marketCap: 2847291,
       holders: 1337,
       price: 0.002847291
