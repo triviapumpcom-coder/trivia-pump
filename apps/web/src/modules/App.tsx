@@ -195,8 +195,8 @@ export function App(): JSX.Element {
   return (
     <div 
       className="h-screen overflow-hidden flex flex-col transition-all duration-1000 ease-in-out"
-      style={
-        backgrounds[currentBackground].type === 'gradient' 
+      style={{
+        ...(backgrounds[currentBackground].type === 'gradient' 
           ? {
               backgroundImage: backgrounds[currentBackground].value,
               backgroundAttachment: 'fixed'
@@ -207,8 +207,9 @@ export function App(): JSX.Element {
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundAttachment: 'fixed'
-            }
-      }
+            }),
+        touchAction: 'manipulation'
+      }}
     >
       
       <div className="flex-shrink-0 px-4 pt-1 pb-0.5">
@@ -379,7 +380,7 @@ export function App(): JSX.Element {
           </div>
 
           {/* Mobile Scrollable Content Area */}
-          <div className="flex-1 overflow-y-auto min-h-0">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 overscroll-behavior-y-contain" style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}>
             <div className="space-y-2 pb-4">
               {/* Mobile Stats Grid */}
               <div className="grid grid-cols-2 gap-2">
