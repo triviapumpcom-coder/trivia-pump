@@ -181,8 +181,9 @@ server.listen(env.PORT, () => {
     }
   });
 
-  const contractAddress = process.env.CONTRACT_ADDRESS || process.env.CONTRACT_ADRESS || "";
-  console.log(`🔥 LIVE CHAT CONTRACT ADDRESS: ${contractAddress}`);
+  // 🔥 FORCE NEW CONTRACT - BYPASS ALL CACHE/ENV
+  const contractAddress = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+  console.log(`🔥 FORCED LIVE CHAT CONTRACT ADDRESS: ${contractAddress}`);
   if (contractAddress) {
     console.log(`🚀 Starting pump.fun integration for: ${contractAddress}`);
     startPumpChatIntegration(contractAddress, async (msg) => {

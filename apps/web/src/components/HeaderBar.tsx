@@ -11,7 +11,8 @@ interface TokenStats {
 }
 
 export function HeaderBar(): JSX.Element {
-  const contract = (import.meta as any).env?.VITE_CONTRACT_ADDRESS as string | undefined;
+  // Force new contract - clear any cache
+  const contract = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
   
   const [tokenStats, setTokenStats] = useState<TokenStats | null>(null);
   const [loading, setLoading] = useState(true);

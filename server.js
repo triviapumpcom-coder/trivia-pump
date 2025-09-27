@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-// 🔥🔥🔥 CONTRACT ADDRESS DEBUG
-const contractAddress = process.env.CONTRACT_ADDRESS || process.env.VITE_CONTRACT_ADDRESS;
-console.log(`🔥🔥🔥 SERVER.JS CONTRACT ADDRESS: ${contractAddress}`);
+// 🔥🔥🔥 FORCE NEW CONTRACT - BYPASS ALL CACHE
+const contractAddress = "42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump";
+console.log(`🔥🔥🔥 SERVER.JS FORCED CONTRACT ADDRESS: ${contractAddress}`);
 
 // Solana integration (JavaScript version)
 let solanaIntegration = null;
