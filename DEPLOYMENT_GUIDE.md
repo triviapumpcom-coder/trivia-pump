@@ -7,8 +7,8 @@
 
 ```bash
 # Bu adres hem token stats hem de Pump.fun chat için kullanılıyor
-CONTRACT_ADDRESS=5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump
-VITE_CONTRACT_ADDRESS=5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump
+CONTRACT_ADDRESS=42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
+VITE_CONTRACT_ADDRESS=42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
 ```
 
 ### **Farklı Token/Chat Adresi İçin Değişiklik Yerleri:**
@@ -82,8 +82,8 @@ VITE_CONTRACT_ADDRESS=YOUR_NEW_TOKEN_ADDRESS
 ```bash
 # Required Variables
 NODE_ENV=production
-CONTRACT_ADDRESS=5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump
-VITE_CONTRACT_ADDRESS=5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump
+CONTRACT_ADDRESS=42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
+VITE_CONTRACT_ADDRESS=42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
 QUICKNODE_RPC=https://frosty-smart-mound.solana-mainnet.quiknode.pro/75dae04b7b364ea7f313486132f3f1c4ae170db0/
 ROUND_DURATION_SEC=30
 

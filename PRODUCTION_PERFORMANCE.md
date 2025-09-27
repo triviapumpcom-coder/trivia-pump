@@ -122,7 +122,7 @@ try {
 # Essential for Production
 REDIS_URL=redis://production-redis-url
 QUICKNODE_RPC=https://your-quicknode-rpc
-CONTRACT_ADDRESS=5wVtfsFhLjxm27K9mN3ziYWCCpQwXXq7HWUiRMW7pump
+CONTRACT_ADDRESS=42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
 DATABASE_URL=postgresql://production-db
 ```
 
