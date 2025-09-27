@@ -21,7 +21,7 @@ export function WinnersTicker(): JSX.Element {
         const latency = latencies[w.id];
         const latencyText = typeof latency === "number" ? latency.toFixed(1) : "-.--";
         const rank = idx + 1;
-        const name = short(w.name || w.id);
+        const name = w.id && w.id.length > 8 ? `${w.id.slice(0, 4)}...${w.id.slice(-4)}` : (w.id || 'Player');
         return { id: w.id, rank, name, val, latencyText };
       });
       const id = `${Date.now()}`;

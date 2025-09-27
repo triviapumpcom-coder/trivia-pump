@@ -66,7 +66,7 @@ export function LeaderboardPanel(): JSX.Element {
               <span className="text-xs flex-shrink-0">{getRankIcon(idx)}</span>
               <div className="min-w-0 flex-1">
                 <div className="font-semibold truncate text-xs">
-                  {it.userId.length > 8 ? `${it.userId.slice(0, 4)}...${it.userId.slice(-4)}` : it.userId}
+                  {it.userId && it.userId.length > 8 ? `${it.userId.slice(0, 4)}...${it.userId.slice(-4)}` : (it.userId || 'Player')}
                 </div>
                 <div className="text-xs text-white/50">Wallet</div>
               </div>

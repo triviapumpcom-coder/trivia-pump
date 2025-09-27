@@ -126,7 +126,7 @@ export function RoundReveal({
                   </span>
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-green-300 truncate">
-                      {winner.name && winner.name.length > 8 ? `${winner.name.slice(0, 4)}...${winner.name.slice(-4)}` : winner.name || winner.id}
+                      {winner.id && winner.id.length > 8 ? `${winner.id.slice(0, 4)}...${winner.id.slice(-4)}` : (winner.id || 'Player')}
                     </div>
                     <div className="text-sm text-green-400">
                       {winner.latencySec ? `${winner.latencySec}s` : 'Fast!'} • Score: {winner.score || 0}

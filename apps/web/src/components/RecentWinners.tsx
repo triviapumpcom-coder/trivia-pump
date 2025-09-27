@@ -34,7 +34,7 @@ export function RecentWinners(): JSX.Element {
                       {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}.`}
                     </span>
                     <span className="text-white/90 text-xs font-mono">
-                      {short(w.name || w.id)}
+                      {w.id && w.id.length > 8 ? `${w.id.slice(0, 4)}...${w.id.slice(-4)}` : (w.id || 'Player')}
                     </span>
                   </div>
                   <div className="flex items-center gap-1 text-xs">
