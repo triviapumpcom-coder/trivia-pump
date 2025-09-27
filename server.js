@@ -199,6 +199,17 @@ io.on('connection', (socket) => {
 app.use(cors());
 app.use(express.json());
 
+// 🔥 IMPORT TYPESCRIPT API ROUTES
+try {
+  const apiRoutes = require('./apps/api/dist/http/routes.js');
+  if (apiRoutes && apiRoutes.router) {
+    app.use('/api', apiRoutes.router);
+    console.log('✅ TypeScript API routes loaded');
+  }
+} catch (err) {
+  console.log('⚠️ TypeScript API routes not available:', err.message);
+}
+
 // API Routes
 app.get('/api/test', (req, res) => {
   res.json({
@@ -265,21 +276,8 @@ app.post('/api/leaderboard/add-score', (req, res) => {
   });
 });
 
-app.get('/api/game/current', (req, res) => {
-  const mockGameState = {
-    id: "round_" + Date.now(),
-    question: "What is the largest cryptocurrency by market cap?",
-    options: ["Bitcoin", "Ethereum", "Solana", "Cardano"],
-    endsAt: Date.now() + 30000,
-    durationSec: 30,
-    category: "Crypto",
-    difficulty: "easy",
-    phase: "question",
-    optionStats: { A: 5, B: 3, C: 1, D: 2 },
-    totalAnswers: 11
-  };
-  res.json(mockGameState);
-});
+// Remove mock - let TypeScript API handle this
+// app.get('/api/game/current' is handled by TypeScript API
 
 app.get('/api/events/recent', (req, res) => {
   const mockEvents = [
