@@ -21,6 +21,6 @@ root.render(
 
 
 // 🔥 WEBSOCKET FIX: Production server connection
-// API_BASE: https://www.triviapump.com
+// API_BASE: https://www.quizpump.com
 // Contract: 42btZmafsPsz87LbEwHnma9VxMjfZJ3C8YwMzerjpump
 // Build: $(date)

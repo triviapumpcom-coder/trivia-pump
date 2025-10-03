@@ -9,7 +9,7 @@ export function getSocket(apiBase?: string): Socket {
   
   // Use current domain in production, localhost in development
   const currentDomain = typeof window !== 'undefined' ? window.location.origin : '';
-  const isProduction = currentDomain.includes('herokuapp.com') || currentDomain.includes('triviapump.com');
+  const isProduction = currentDomain.includes('herokuapp.com') || currentDomain.includes('quizpump.com');
   const fallbackUrl = isProduction ? currentDomain : "http://127.0.0.1:5001";
   const base = apiBase ?? (import.meta as any).env?.VITE_API_BASE ?? fallbackUrl;
   console.log('🔗 WebSocket connecting to:', base);
