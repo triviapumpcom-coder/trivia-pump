@@ -13,7 +13,7 @@ export const questions250 = [
     "tags": ["crypto", "bitcoin"],
     "durationSec": 15,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_002",
@@ -25,7 +25,7 @@ export const questions250 = [
     "tags": ["crypto", "ethereum"],
     "durationSec": 20,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_003",
@@ -37,7 +37,7 @@ export const questions250 = [
     "tags": ["crypto", "defi"],
     "durationSec": 15,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_004",
@@ -49,7 +49,7 @@ export const questions250 = [
     "tags": ["crypto", "exchanges"],
     "durationSec": 15,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_005",
@@ -61,7 +61,7 @@ export const questions250 = [
     "tags": ["crypto", "smart-contracts"],
     "durationSec": 20,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_006",
@@ -73,7 +73,7 @@ export const questions250 = [
     "tags": ["crypto", "bitcoin", "consensus"],
     "durationSec": 20,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_007",
@@ -85,7 +85,7 @@ export const questions250 = [
     "tags": ["crypto", "nft"],
     "durationSec": 15,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_008",
@@ -97,7 +97,7 @@ export const questions250 = [
     "tags": ["crypto", "solana"],
     "durationSec": 20,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_009",
@@ -109,7 +109,7 @@ export const questions250 = [
     "tags": ["crypto", "binance"],
     "durationSec": 15,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_010",
@@ -121,7 +121,7 @@ export const questions250 = [
     "tags": ["crypto", "wallets", "security"],
     "durationSec": 20,
     "source": "curated:crypto_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_011",
@@ -133,7 +133,7 @@ export const questions250 = [
     "tags": ["crypto", "slang"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_012",
@@ -145,7 +145,7 @@ export const questions250 = [
     "tags": ["crypto", "stablecoins"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_013",
@@ -157,7 +157,7 @@ export const questions250 = [
     "tags": ["crypto", "stablecoins"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_014",
@@ -169,7 +169,7 @@ export const questions250 = [
     "tags": ["crypto", "dao", "governance"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_015",
@@ -181,7 +181,7 @@ export const questions250 = [
     "tags": ["crypto", "defi", "yield"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_016",
@@ -193,7 +193,7 @@ export const questions250 = [
     "tags": ["crypto", "bitcoin", "scaling"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_017",
@@ -205,7 +205,7 @@ export const questions250 = [
     "tags": ["crypto", "defi", "metrics"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_018",
@@ -217,7 +217,7 @@ export const questions250 = [
     "tags": ["crypto", "defi", "trading"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_019",
@@ -229,7 +229,7 @@ export const questions250 = [
     "tags": ["crypto", "defi", "liquidity"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_020",
@@ -241,7 +241,7 @@ export const questions250 = [
     "tags": ["crypto", "defi", "lending"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_021",
@@ -253,7 +253,7 @@ export const questions250 = [
     "tags": ["crypto", "ethereum", "tokens"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_022",
@@ -265,7 +265,7 @@ export const questions250 = [
     "tags": ["crypto", "blockchain", "forks"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_023",
@@ -277,7 +277,7 @@ export const questions250 = [
     "tags": ["crypto", "bitcoin", "mining"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_024",
@@ -289,7 +289,7 @@ export const questions250 = [
     "tags": ["crypto", "trading", "slang"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_025",
@@ -301,7 +301,7 @@ export const questions250 = [
     "tags": ["crypto", "trading", "psychology"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_026",
@@ -313,7 +313,7 @@ export const questions250 = [
     "tags": ["crypto", "scams", "defi"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_027",
@@ -325,7 +325,7 @@ export const questions250 = [
     "tags": ["crypto", "trading", "defi"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_028",
@@ -337,7 +337,7 @@ export const questions250 = [
     "tags": ["crypto", "memecoins", "culture"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_029",
@@ -349,7 +349,7 @@ export const questions250 = [
     "tags": ["crypto", "memecoins", "dogecoin"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_030",
@@ -361,7 +361,7 @@ export const questions250 = [
     "tags": ["crypto", "cardano", "blockchain"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_031",
@@ -373,7 +373,7 @@ export const questions250 = [
     "tags": ["crypto", "polygon", "scaling"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_032",
@@ -385,7 +385,7 @@ export const questions250 = [
     "tags": ["crypto", "chainlink", "oracles"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_033",
@@ -397,7 +397,7 @@ export const questions250 = [
     "tags": ["crypto", "uniswap", "dex"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_034",
@@ -409,7 +409,7 @@ export const questions250 = [
     "tags": ["crypto", "avalanche", "blockchain"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_035",
@@ -421,7 +421,7 @@ export const questions250 = [
     "tags": ["crypto", "terra", "stablecoins"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_036",
@@ -433,7 +433,7 @@ export const questions250 = [
     "tags": ["crypto", "ftx", "exchanges"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_037",
@@ -445,7 +445,7 @@ export const questions250 = [
     "tags": ["crypto", "memecoins", "shiba"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_038",
@@ -457,7 +457,7 @@ export const questions250 = [
     "tags": ["crypto", "ripple", "payments"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_039",
@@ -469,7 +469,7 @@ export const questions250 = [
     "tags": ["crypto", "litecoin", "bitcoin"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_040",
@@ -481,7 +481,7 @@ export const questions250 = [
     "tags": ["crypto", "monero", "privacy"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_041",
@@ -493,7 +493,7 @@ export const questions250 = [
     "tags": ["crypto", "polkadot", "interoperability"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_042",
@@ -505,7 +505,7 @@ export const questions250 = [
     "tags": ["crypto", "cosmos", "interoperability"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_043",
@@ -517,7 +517,7 @@ export const questions250 = [
     "tags": ["crypto", "tether", "stablecoins"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_044",
@@ -529,7 +529,7 @@ export const questions250 = [
     "tags": ["crypto", "binance", "exchange-tokens"],
     "durationSec": 15,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_045",
@@ -541,7 +541,7 @@ export const questions250 = [
     "tags": ["crypto", "ethereum-classic", "forks"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_046",
@@ -553,7 +553,7 @@ export const questions250 = [
     "tags": ["crypto", "aave", "defi"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_047",
@@ -565,7 +565,7 @@ export const questions250 = [
     "tags": ["crypto", "compound", "defi"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_048",
@@ -577,7 +577,7 @@ export const questions250 = [
     "tags": ["crypto", "makerdao", "stablecoins"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_049",
@@ -589,7 +589,7 @@ export const questions250 = [
     "tags": ["crypto", "curve", "defi"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_050",
@@ -601,7 +601,7 @@ export const questions250 = [
     "tags": ["crypto", "sushiswap", "dex"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_051",
@@ -613,7 +613,7 @@ export const questions250 = [
     "tags": ["crypto", "pancakeswap", "bsc"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_052",
@@ -625,7 +625,7 @@ export const questions250 = [
     "tags": ["crypto", "yearn", "defi"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_053",
@@ -637,7 +637,7 @@ export const questions250 = [
     "tags": ["crypto", "1inch", "dex"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_054",
@@ -649,7 +649,7 @@ export const questions250 = [
     "tags": ["crypto", "synthetix", "derivatives"],
     "durationSec": 25,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_055",
@@ -661,7 +661,7 @@ export const questions250 = [
     "tags": ["crypto", "thegraph", "infrastructure"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_056",
@@ -673,7 +673,7 @@ export const questions250 = [
     "tags": ["crypto", "filecoin", "storage"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_057",
@@ -685,7 +685,7 @@ export const questions250 = [
     "tags": ["crypto", "arweave", "storage"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_058",
@@ -697,7 +697,7 @@ export const questions250 = [
     "tags": ["crypto", "helium", "iot"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_059",
@@ -709,7 +709,7 @@ export const questions250 = [
     "tags": ["crypto", "theta", "streaming"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "crypto_060",
@@ -721,16 +721,16 @@ export const questions250 = [
     "tags": ["crypto", "bat", "advertising"],
     "durationSec": 20,
     "source": "curated:crypto_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
-  // VISUAL QUESTIONS (50 total) - All with working URLs
+  // VISUAL QUESTIONS (50 total) - All with working CDN URLs
   {
     "id": "visual_001",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/400px-JavaScript-logo.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ],
     "options": ["Python", "JavaScript", "Java", "TypeScript"],
     "correct": "B",
@@ -738,14 +738,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_002",
     "type": "image",
     "question": "Which cryptocurrency logo is shown?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/400px-Bitcoin.svg.png" }
+      { "type": "image", "url": "https://cryptologos.cc/logos/bitcoin-btc-logo.svg" }
     ],
     "options": ["Ethereum", "Bitcoin", "Litecoin", "Dogecoin"],
     "correct": "B",
@@ -753,14 +753,14 @@ export const questions250 = [
     "tags": ["crypto", "visual", "bitcoin"],
     "durationSec": 20,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_003",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/400px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=400&fit=crop" }
     ],
     "options": ["Big Ben", "Eiffel Tower", "Statue of Liberty", "Leaning Tower of Pisa"],
     "correct": "B",
@@ -768,14 +768,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_004",
     "type": "image",
     "question": "Which company's logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/400px-Google_2015_logo.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" }
     ],
     "options": ["Microsoft", "Google", "Apple", "Amazon"],
     "correct": "B",
@@ -783,14 +783,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "companies"],
     "durationSec": 20,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_005",
     "type": "image",
     "question": "What is this programming language logo?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/400px-Python-logo-notext.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
     ],
     "options": ["Java", "C++", "Python", "Ruby"],
     "correct": "C",
@@ -798,14 +798,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_006",
     "type": "image",
     "question": "Which social media platform logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/400px-Facebook_f_logo_%282019%29.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" }
     ],
     "options": ["Twitter", "Instagram", "Facebook", "LinkedIn"],
     "correct": "C",
@@ -813,14 +813,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "social"],
     "durationSec": 20,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_007",
     "type": "image",
     "question": "What country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/400px-Flag_of_Germany.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/de.png" }
     ],
     "options": ["Belgium", "Germany", "Netherlands", "Austria"],
     "correct": "B",
@@ -828,14 +828,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_008",
     "type": "image",
     "question": "Which operating system logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/400px-Tux.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" }
     ],
     "options": ["Windows", "macOS", "Linux", "Android"],
     "correct": "C",
@@ -843,14 +843,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "os"],
     "durationSec": 25,
     "source": "curated:visual_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_009",
     "type": "image",
     "question": "Which browser logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/400px-Firefox_logo%2C_2019.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firefox/firefox-original.svg" }
     ],
     "options": ["Chrome", "Firefox", "Safari", "Edge"],
     "correct": "B",
@@ -858,14 +858,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "browsers"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_010",
     "type": "image",
     "question": "What cryptocurrency logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/400px-Ethereum_logo_2014.svg.png" }
+      { "type": "image", "url": "https://cryptologos.cc/logos/ethereum-classic-etc-logo.svg" }
     ],
     "options": ["Bitcoin", "Ethereum", "Litecoin", "Ripple"],
     "correct": "B",
@@ -873,14 +873,14 @@ export const questions250 = [
     "tags": ["crypto", "visual", "ethereum"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_011",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Turkey.svg/400px-Flag_of_Turkey.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/tr.png" }
     ],
     "options": ["Greece", "Turkey", "Tunisia", "Algeria"],
     "correct": "B",
@@ -888,14 +888,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_012",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/400px-ISO_C%2B%2B_Logo.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" }
     ],
     "options": ["C", "C++", "C#", "Java"],
     "correct": "B",
@@ -903,14 +903,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_013",
     "type": "image",
     "question": "Which social media platform logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/400px-Instagram_logo_2016.svg.png" }
+      { "type": "image", "url": "https://static.cdnlogo.com/logos/i/98/instagram-icon.svg" }
     ],
     "options": ["Twitter", "Instagram", "Snapchat", "TikTok"],
     "correct": "B",
@@ -918,14 +918,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "social"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_014",
     "type": "image",
     "question": "Which company's logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/400px-Apple_logo_black.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" }
     ],
     "options": ["Microsoft", "Google", "Apple", "Samsung"],
     "correct": "C",
@@ -933,14 +933,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "companies"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_015",
     "type": "image",
     "question": "What is this famous building?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Statue_of_Liberty_7.jpg/400px-Statue_of_Liberty_7.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=400&h=400&fit=crop" }
     ],
     "options": ["Eiffel Tower", "Big Ben", "Statue of Liberty", "Christ the Redeemer"],
     "correct": "C",
@@ -948,14 +948,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_016",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/400px-Flag_of_the_United_States.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/us.png" }
     ],
     "options": ["Canada", "United States", "United Kingdom", "Australia"],
     "correct": "B",
@@ -963,14 +963,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_017",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/400px-PHP-logo.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" }
     ],
     "options": ["Python", "JavaScript", "PHP", "Ruby"],
     "correct": "C",
@@ -978,14 +978,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_018",
     "type": "image",
     "question": "Which browser logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/400px-Google_Chrome_icon_%28February_2022%29.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" }
     ],
     "options": ["Chrome", "Firefox", "Safari", "Edge"],
     "correct": "A",
@@ -993,14 +993,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "browsers"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_019",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg/400px-Colosseum_in_Rome%2C_Italy_-_April_2007.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&h=400&fit=crop" }
     ],
     "options": ["Pantheon", "Colosseum", "Parthenon", "Amphitheater"],
     "correct": "B",
@@ -1008,14 +1008,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_020",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/400px-Flag_of_Brazil.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/br.png" }
     ],
     "options": ["Argentina", "Brazil", "Colombia", "Venezuela"],
     "correct": "B",
@@ -1023,14 +1023,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_021",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/400px-Ruby_logo.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" }
     ],
     "options": ["Python", "Ruby", "Perl", "Swift"],
     "correct": "B",
@@ -1038,14 +1038,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_022",
     "type": "image",
     "question": "Which social media platform logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/400px-Logo_of_Twitter.svg.png" }
+      { "type": "image", "url": "https://static.cdnlogo.com/logos/t/96/twitter-icon.svg" }
     ],
     "options": ["Twitter", "Instagram", "Facebook", "LinkedIn"],
     "correct": "A",
@@ -1053,14 +1053,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "social"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_023",
     "type": "image",
     "question": "What is this famous building?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Sydney_Opera_House_-_Dec_2008.jpg/400px-Sydney_Opera_House_-_Dec_2008.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?w=400&h=400&fit=crop" }
     ],
     "options": ["Sydney Opera House", "Guggenheim Museum", "Walt Disney Concert Hall", "Sage Gateshead"],
     "correct": "A",
@@ -1068,14 +1068,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_024",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/400px-Flag_of_Spain.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/es.png" }
     ],
     "options": ["Portugal", "Spain", "Italy", "France"],
     "correct": "B",
@@ -1083,14 +1083,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_025",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/400px-Typescript_logo_2020.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" }
     ],
     "options": ["JavaScript", "TypeScript", "CoffeeScript", "Dart"],
     "correct": "B",
@@ -1098,14 +1098,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_026",
     "type": "image",
     "question": "Which company's logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/400px-Microsoft_logo.svg.png" }
+      { "type": "image", "url": "https://i.imgur.com/lC0fZ8o.png" }
     ],
     "options": ["Microsoft", "Google", "Apple", "IBM"],
     "correct": "A",
@@ -1113,14 +1113,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "companies"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_027",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Taj_Mahal%2C_Agra%2C_India_edit3.jpg/400px-Taj_Mahal%2C_Agra%2C_India_edit3.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=400&fit=crop" }
     ],
     "options": ["Red Fort", "Taj Mahal", "Lotus Temple", "India Gate"],
     "correct": "B",
@@ -1128,14 +1128,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_028",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/400px-Flag_of_Mexico.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/mx.png" }
     ],
     "options": ["Italy", "Mexico", "Hungary", "Bulgaria"],
     "correct": "B",
@@ -1143,14 +1143,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_029",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/400px-Rust_programming_language_black_logo.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" }
     ],
     "options": ["Go", "Rust", "Swift", "Kotlin"],
     "correct": "B",
@@ -1158,14 +1158,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_030",
     "type": "image",
     "question": "Which social media platform logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/400px-LinkedIn_logo_initials.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" }
     ],
     "options": ["Twitter", "Instagram", "Facebook", "LinkedIn"],
     "correct": "D",
@@ -1173,14 +1173,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "social"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_031",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Leaning_Tower_of_Pisa_%28July_2013%29.jpg/400px-Leaning_Tower_of_Pisa_%28July_2013%29.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1585737299886-c4c99a7ea144?w=400&h=400&fit=crop" }
     ],
     "options": ["Bell Tower", "Leaning Tower of Pisa", "Clock Tower", "Water Tower"],
     "correct": "B",
@@ -1188,14 +1188,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_032",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/400px-Flag_of_Italy.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/it.png" }
     ],
     "options": ["France", "Italy", "Ireland", "Hungary"],
     "correct": "B",
@@ -1203,14 +1203,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_033",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/400px-Go_Logo_Blue.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" }
     ],
     "options": ["Go", "Rust", "Swift", "Kotlin"],
     "correct": "A",
@@ -1218,14 +1218,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_034",
     "type": "image",
     "question": "Which company's logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/400px-Amazon_logo.svg.png" }
+      { "type": "image", "url": "https://i.imgur.com/4K9wV1t.png" }
     ],
     "options": ["Microsoft", "Google", "Apple", "Amazon"],
     "correct": "D",
@@ -1233,14 +1233,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "companies"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_035",
     "type": "image",
     "question": "What is this famous building?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/London_Big_Ben_Phone_box.jpg/400px-London_Big_Ben_Phone_box.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=400&fit=crop" }
     ],
     "options": ["Big Ben", "Clock Tower", "Parliament Building", "Westminster Abbey"],
     "correct": "A",
@@ -1248,14 +1248,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_036",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/400px-Flag_of_France.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/fr.png" }
     ],
     "options": ["Netherlands", "France", "Russia", "Luxembourg"],
     "correct": "B",
@@ -1263,14 +1263,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_037",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/400px-Unofficial_JavaScript_logo_2.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ],
     "options": ["Java", "JavaScript", "TypeScript", "CoffeeScript"],
     "correct": "B",
@@ -1278,14 +1278,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_038",
     "type": "image",
     "question": "Which browser logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/400px-Safari_browser_logo.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/safari/safari-original.svg" }
     ],
     "options": ["Chrome", "Firefox", "Safari", "Edge"],
     "correct": "C",
@@ -1293,14 +1293,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "browsers"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_039",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?w=400&h=400&fit=crop" }
     ],
     "options": ["Chrysler Building", "Empire State Building", "One World Trade Center", "Rockefeller Center"],
     "correct": "B",
@@ -1308,14 +1308,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_040",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/400px-Flag_of_Australia_%28converted%29.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/au.png" }
     ],
     "options": ["New Zealand", "Australia", "United Kingdom", "Fiji"],
     "correct": "B",
@@ -1323,14 +1323,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_041",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin_Icon.png/400px-Kotlin_Icon.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" }
     ],
     "options": ["Java", "Kotlin", "Scala", "Groovy"],
     "correct": "B",
@@ -1338,14 +1338,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "programming"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_042",
     "type": "image",
     "question": "Which company's logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Tesla_logo.png/400px-Tesla_logo.png" }
+      { "type": "image", "url": "https://i.imgur.com/YcvDXKz.png" }
     ],
     "options": ["SpaceX", "Tesla", "Ford", "BMW"],
     "correct": "B",
@@ -1353,14 +1353,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "companies"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_043",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-china-beijing-great-wall-of-china.jpg/400px-Gfp-china-beijing-great-wall-of-china.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=400&h=400&fit=crop" }
     ],
     "options": ["Great Wall of China", "Hadrian's Wall", "Berlin Wall", "Western Wall"],
     "correct": "A",
@@ -1368,14 +1368,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_044",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/400px-Flag_of_Russia.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/ru.png" }
     ],
     "options": ["Netherlands", "France", "Russia", "Slovakia"],
     "correct": "C",
@@ -1383,14 +1383,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_045",
     "type": "image",
     "question": "What programming language logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Apache_Spark_logo.svg/400px-Apache_Spark_logo.svg.png" }
+      { "type": "image", "url": "https://i.imgur.com/3eSpKRO.png" }
     ],
     "options": ["Scala", "Apache Spark", "Hadoop", "Kafka"],
     "correct": "B",
@@ -1398,14 +1398,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "big-data"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_046",
     "type": "image",
     "question": "Which social media platform logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/400px-Telegram_logo.svg.png" }
+      { "type": "image", "url": "https://i.imgur.com/uLN1ezy.png" }
     ],
     "options": ["WhatsApp", "Telegram", "Signal", "Discord"],
     "correct": "B",
@@ -1413,14 +1413,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "messaging"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_047",
     "type": "image",
     "question": "What is this famous landmark?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/400px-Kheops-Pyramid.jpg" }
+      { "type": "image", "url": "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=400&h=400&fit=crop" }
     ],
     "options": ["Pyramid of Giza", "Mayan Pyramid", "Aztec Pyramid", "Step Pyramid"],
     "correct": "A",
@@ -1428,14 +1428,14 @@ export const questions250 = [
     "tags": ["general", "visual", "landmarks"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_048",
     "type": "image",
     "question": "Which country's flag is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/400px-Flag_of_Japan.svg.png" }
+      { "type": "image", "url": "https://flagcdn.com/w320/jp.png" }
     ],
     "options": ["South Korea", "Japan", "China", "Bangladesh"],
     "correct": "B",
@@ -1443,14 +1443,14 @@ export const questions250 = [
     "tags": ["general", "visual", "flags"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_049",
     "type": "image",
     "question": "What programming framework logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png" }
+      { "type": "image", "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" }
     ],
     "options": ["Vue.js", "React", "Angular", "Svelte"],
     "correct": "B",
@@ -1458,14 +1458,14 @@ export const questions250 = [
     "tags": ["tech", "visual", "frameworks"],
     "durationSec": 25,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "visual_050",
     "type": "image",
     "question": "Which company's logo is this?",
     "media": [
-      { "type": "image", "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Netflix_logo.svg/400px-Netflix_logo.svg.png" }
+      { "type": "image", "url": "https://i.imgur.com/ZKWqJjV.png" }
     ],
     "options": ["Hulu", "Netflix", "Disney+", "Amazon Prime"],
     "correct": "B",
@@ -1473,7 +1473,7 @@ export const questions250 = [
     "tags": ["tech", "visual", "streaming"],
     "durationSec": 20,
     "source": "curated:visual_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
   // TECH QUESTIONS (60 total) - Continue from tech_021
@@ -1487,7 +1487,7 @@ export const questions250 = [
     "tags": ["tech", "css", "web"],
     "durationSec": 15,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_022",
@@ -1499,7 +1499,7 @@ export const questions250 = [
     "tags": ["tech", "nodejs", "javascript"],
     "durationSec": 20,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_023",
@@ -1511,7 +1511,7 @@ export const questions250 = [
     "tags": ["tech", "sql", "database"],
     "durationSec": 15,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_024",
@@ -1523,7 +1523,7 @@ export const questions250 = [
     "tags": ["tech", "git", "version-control"],
     "durationSec": 20,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_025",
@@ -1535,7 +1535,7 @@ export const questions250 = [
     "tags": ["tech", "http", "web"],
     "durationSec": 15,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_026",
@@ -1547,7 +1547,7 @@ export const questions250 = [
     "tags": ["tech", "docker", "devops"],
     "durationSec": 20,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_027",
@@ -1559,7 +1559,7 @@ export const questions250 = [
     "tags": ["tech", "kubernetes", "devops"],
     "durationSec": 25,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_028",
@@ -1571,7 +1571,7 @@ export const questions250 = [
     "tags": ["tech", "rest", "api"],
     "durationSec": 20,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_029",
@@ -1583,7 +1583,7 @@ export const questions250 = [
     "tags": ["tech", "graphql", "api"],
     "durationSec": 20,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "tech_030",
@@ -1595,7 +1595,7 @@ export const questions250 = [
     "tags": ["tech", "redis", "database"],
     "durationSec": 20,
     "source": "curated:tech_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
   // GENERAL KNOWLEDGE (60 total) - Continue from general_026
@@ -1609,7 +1609,7 @@ export const questions250 = [
     "tags": ["general", "geography"],
     "durationSec": 20,
     "source": "curated:general_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "general_027",
@@ -1621,7 +1621,7 @@ export const questions250 = [
     "tags": ["general", "space", "planets"],
     "durationSec": 15,
     "source": "curated:general_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "general_028",
@@ -1633,7 +1633,7 @@ export const questions250 = [
     "tags": ["general", "geography", "rivers"],
     "durationSec": 20,
     "source": "curated:general_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "general_029",
@@ -1645,7 +1645,7 @@ export const questions250 = [
     "tags": ["general", "art", "history"],
     "durationSec": 15,
     "source": "curated:general_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "general_030",
@@ -1657,7 +1657,7 @@ export const questions250 = [
     "tags": ["general", "science", "materials"],
     "durationSec": 20,
     "source": "curated:general_v2",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
   // SPORTS QUESTIONS (30 total) - New category
@@ -1671,7 +1671,7 @@ export const questions250 = [
     "tags": ["sports", "basketball"],
     "durationSec": 15,
     "source": "curated:sports_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "sports_002",
@@ -1683,7 +1683,7 @@ export const questions250 = [
     "tags": ["sports", "football", "worldcup"],
     "durationSec": 20,
     "source": "curated:sports_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "sports_003",
@@ -1695,7 +1695,7 @@ export const questions250 = [
     "tags": ["sports", "tennis"],
     "durationSec": 20,
     "source": "curated:sports_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "sports_004",
@@ -1707,7 +1707,7 @@ export const questions250 = [
     "tags": ["sports", "basketball"],
     "durationSec": 15,
     "source": "curated:sports_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "sports_005",
@@ -1719,7 +1719,7 @@ export const questions250 = [
     "tags": ["sports", "golf"],
     "durationSec": 15,
     "source": "curated:sports_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
   // SCIENCE QUESTIONS (30 total) - New category
@@ -1733,7 +1733,7 @@ export const questions250 = [
     "tags": ["science", "chemistry"],
     "durationSec": 15,
     "source": "curated:science_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "science_002",
@@ -1745,7 +1745,7 @@ export const questions250 = [
     "tags": ["science", "physics"],
     "durationSec": 20,
     "source": "curated:science_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "science_003",
@@ -1757,7 +1757,7 @@ export const questions250 = [
     "tags": ["science", "biology"],
     "durationSec": 15,
     "source": "curated:science_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "science_004",
@@ -1769,7 +1769,7 @@ export const questions250 = [
     "tags": ["science", "biology", "anatomy"],
     "durationSec": 20,
     "source": "curated:science_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "science_005",
@@ -1781,7 +1781,7 @@ export const questions250 = [
     "tags": ["science", "astronomy"],
     "durationSec": 15,
     "source": "curated:science_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
   // HISTORY QUESTIONS (30 total) - New category
@@ -1795,7 +1795,7 @@ export const questions250 = [
     "tags": ["history", "world-war"],
     "durationSec": 20,
     "source": "curated:history_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "history_002",
@@ -1807,7 +1807,7 @@ export const questions250 = [
     "tags": ["history", "space"],
     "durationSec": 15,
     "source": "curated:history_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "history_003",
@@ -1819,7 +1819,7 @@ export const questions250 = [
     "tags": ["history", "ancient"],
     "durationSec": 25,
     "source": "curated:history_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "history_004",
@@ -1831,7 +1831,7 @@ export const questions250 = [
     "tags": ["history", "cold-war"],
     "durationSec": 20,
     "source": "curated:history_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
   {
     "id": "history_005",
@@ -1843,7 +1843,7 @@ export const questions250 = [
     "tags": ["history", "usa"],
     "durationSec": 15,
     "source": "curated:history_v1",
-    "updatedAt": "2025-09-26T00:00:00Z"
+    "updatedAt": "2025-10-03T00:00:00Z"
   },
 
   // Import remaining 110 questions
